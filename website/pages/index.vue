@@ -4,7 +4,7 @@
       <div class="view-title">开始使用</div>
 
       <pre>
-npm install jsmod-pc-vue --save;
+npm install jsmod-pc-vue --save
 
 import Jsmod from 'jsmod-pc-vue';
 Vue.use(Jsmod);
