@@ -5,7 +5,7 @@
 		</common-header>
 
     <div v-if="showSource" class="common-footer-source">
-      <a :href="'https://github.com/chaogao/jsmod-mobile-vue/tree/master/website/pages/' + source ">
+      <a :href="'https://github.com/chaogao/jsmod-pc-vue/tree/master/website/pages/' + source ">
         <i class="iconjsmod iconjsmod-sousuo"></i>
         <span>本例源码</span>
       </a>

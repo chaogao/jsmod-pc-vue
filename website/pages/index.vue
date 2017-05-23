@@ -9,6 +9,14 @@
     </div>
 
     <div class="components-view">
+      <div class="view-title">Github</div>
+
+      <div>
+        <a href="https://github.com/chaogao/jsmod-pc-vue" target="_blank">https://github.com/chaogao/jsmod-pc-vue</a>
+      </div>
+    </div>
+
+    <div class="components-view">
       <div class="view-title">others todo................</div>
 
     </div>
