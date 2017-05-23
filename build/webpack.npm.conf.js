@@ -12,7 +12,7 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    'jsmod-mobile': './src/index.js'
+    'jsmod-pc': './src/index.js'
   },
 
   module: {

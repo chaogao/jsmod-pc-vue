@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "jsmod components for vue",
   "author": "gaochao04@gmail.com",
-  "main": "/lib/jsmod-mobile.js",
+  "main": "/lib/jsmod-pc.js",
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
