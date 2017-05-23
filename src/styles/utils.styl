@@ -1,0 +1,35 @@
+*
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+.jsmod-mask
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+
+  &.jsmod-mask-none
+    position: static;
+    width: 0;
+    height: 0;
+
+.jsmod-loading
+  animation-duration: 0.6s;
+  animation-iteration-count: infinite;
+  animation-name: jsmod-loading;
+  animation-timing-function: linear;
+  display: inline-block;
+
+@keyframes jsmod-loading
+  from
+    transform: rotate(0deg)
+
+  to
+    transform: rotate(360deg)
+
+// fix iconjsmod position
+.iconjsmod-shuaxin:before
+  position: relative;
+  left: 1.3px;
+  top: 0px;

@@ -1,0 +1,77 @@
+.jsmod-mask-enter-active
+  opacity: 1;
+  transform: scale(1);
+  transition-duration: 400ms;
+  transition-property: transform, opacity;
+
+  &.jsmod-layer-vertical
+    .jsmod-layer-content
+      transition-duration: 300ms;
+      transition-property: transform;
+      transform: translateY(0%);
+
+  &.jsmod-layer-horizontal
+    .jsmod-layer-content
+      transition-duration: 300ms;
+      transition-property: transform;
+      transform: translateY(0%);
+
+.jsmod-mask-enter
+  opacity: 0;
+  transform: scale(1.05);
+
+  &.jsmod-layer-vertical
+    .jsmod-layer-content
+      transform: translateY(100%);
+
+    &.jsmod-layer-vertical-top
+      .jsmod-layer-content
+        transform: translateY(-100%);
+
+
+  &.jsmod-layer-horizontal
+    .jsmod-layer-content
+      transform: translateX(-100%);
+
+    &.jsmod-layer-horizontal-right
+      .jsmod-layer-content
+        transform: translateX(100%);
+
+
+.jsmod-mask-leave-active
+  opacity: 0;
+  transform: scale(1);
+  transition-duration: 400ms;
+  transition-property: transform, opacity;
+
+  &.jsmod-layer-vertical
+    .jsmod-layer-content
+      transition-duration: 300ms;
+      transition-property: transform;
+      transform: translateY(100%);
+
+    &.jsmod-layer-vertical-top
+      .jsmod-layer-content
+        transform: translateY(-100%);
+
+  &.jsmod-layer-horizontal
+    .jsmod-layer-content
+      transition-duration: 300ms;
+      transition-property: transform;
+      transform: translateX(-100%);
+
+    &.jsmod-layer-horizontal-right
+      .jsmod-layer-content
+        transform: translateX(100%);
+
+.jsmod-mask-leave
+  opacity: 1!important;;
+  transform: scale(1)!important;;
+
+  &.jsmod-layer-vertical
+    .jsmod-layer-content
+      transform: translateY(0%)!important;
+
+  &.jsmod-layer-horizontal
+    .jsmod-layer-content
+      transform: translateX(0%)!important;

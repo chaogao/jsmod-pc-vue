@@ -1,0 +1,26 @@
+main-color = #e41b23;
+sub-color = #ff5a00;
+border-color = #f7f7f7;
+red-color = #fe0000;
+green-color = #649b28;
+blue-color = #4ad1c6;
+
+btn(width, height, size, bgColor, fontColor, borderColor, radius=0)
+  display: inline-block;
+  width: width;
+  height: height;
+  line-height: height;
+  font-size: size;
+  color: fontColor;
+  background: bgColor;
+  border: 1px solid borderColor;
+  text-align: center;
+  border-radius: radius;
+  text-decoration: none;
+  transition: opacity 0.3s;
+
+  &:hover
+    opacity: 0.9;
+
+  &:active
+    background: darken(bgColor, 10);
