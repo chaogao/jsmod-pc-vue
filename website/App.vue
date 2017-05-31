@@ -42,6 +42,12 @@
             ModTab
             <span class="cn-name">分栏</span>
           </router-link>
+
+
+          <router-link to="pagination">
+            ModPagination
+            <span class="cn-name">分页</span>
+          </router-link>
         </div>
       </div>
 

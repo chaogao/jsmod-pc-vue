@@ -10,6 +10,7 @@ import Carousel from '../pages/carousel'
 import Banner from '../pages/carousel/banner'
 import Image from '../pages/image'
 import Tab from '../pages/tab'
+import Pagination from '../pages/pagination'
 
 import config from '../../config'
 
@@ -74,6 +75,11 @@ let router = new Router({
       path: '/tab',
       name: 'tab',
       component: Tab
+    },
+    {
+      path: '/pagination',
+      name: 'pagination',
+      component: Pagination
     }
   ]
 });

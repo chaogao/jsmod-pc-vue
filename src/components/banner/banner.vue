@@ -163,6 +163,7 @@
   .jsmod-banner-control-right
     cursor: pointer;
     transition: background 0.3s;
+    z-index: 1;
 
     &:hover
       background: rgba(0, 0, 0, 0.1);

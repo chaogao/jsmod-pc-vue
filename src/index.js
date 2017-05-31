@@ -18,6 +18,8 @@ import { ModImage } from './components/image';
 
 import { ModTab, ModTabItem } from './components/tab';
 
+import { ModPagination, PAGE_TYPE } from './components/pagination';
+
 
 import './styles/utils.styl';
 import './styles/transition.styl';
@@ -34,7 +36,8 @@ const Components = {
   ModBanner,
   ModImage,
   ModTab,
-  ModTabItem
+  ModTabItem,
+  ModPagination
 }
 
 const install = (Vue, options) => {
@@ -48,7 +51,10 @@ const install = (Vue, options) => {
     'dialog': Dialog,
     'alert': Alert,
     'confirm': Confirm,
-    'toast': Toast
+    'toast': Toast,
+    'pagination': {
+      PAGE_TYPE: PAGE_TYPE
+    }
   };
 }
 
