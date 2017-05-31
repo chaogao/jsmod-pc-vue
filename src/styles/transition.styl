@@ -1,6 +1,5 @@
 .jsmod-mask-enter-active
   opacity: 1;
-  transform: scale(1);
   transition-duration: 400ms;
   transition-property: transform, opacity;
 
@@ -18,7 +17,6 @@
 
 .jsmod-mask-enter
   opacity: 0;
-  transform: scale(1.05);
 
   &.jsmod-layer-vertical
     .jsmod-layer-content
@@ -40,7 +38,6 @@
 
 .jsmod-mask-leave-active
   opacity: 0;
-  transform: scale(1);
   transition-duration: 400ms;
   transition-property: transform, opacity;
 
@@ -65,9 +62,6 @@
         transform: translateX(100%);
 
 .jsmod-mask-leave
-  opacity: 1!important;;
-  transform: scale(1)!important;;
-
   &.jsmod-layer-vertical
     .jsmod-layer-content
       transform: translateY(0%)!important;

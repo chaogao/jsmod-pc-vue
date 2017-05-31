@@ -11,8 +11,16 @@
       </a>
     </mod-carousel-item>
 
-    <div class="jsmod-banner-ext" slot="ext">
+    <div  class="jsmod-banner-ext" slot="ext">
       <span class="jsmod-banner-ext-current">{{ index + 1 }}</span> / {{ list.length }}
+    </div>
+
+    <div v-on:click="pre" class="jsmod-banner-control-left">
+      <i :style="{'font-size': controlSize}" class="iconjsmod iconjsmod-xiangzuo1"></i>
+    </div>
+
+    <div  v-on:click="next" class="jsmod-banner-control-right">
+      <i :style="{'font-size': controlSize}" class="iconjsmod iconjsmod-xiangyou1"></i>
     </div>
   </mod-carousel>
 </template>
@@ -33,6 +41,11 @@
     props: {
       list: {
         type: Array
+      },
+
+      controlSize: {
+        type: String,
+        default: '16px'
       },
 
       height: {
@@ -129,6 +142,42 @@
       font-weight: bold;
       font-size: 14px;
 
+
+  .jsmod-banner-control-left
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    min-width: 50px;
+    width: 10%;
+
+  .jsmod-banner-control-right
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    min-width: 50px;
+    width: 10%;
+
+  .jsmod-banner-control-left,
+  .jsmod-banner-control-right
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover
+      background: rgba(0, 0, 0, 0.1);
+
+      i
+        color: #efefef;
+
+    i
+      color: #fff;
+      font-size: 16px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
   .jsmod-banner-bottom-text
     line();
     position: absolute;
@@ -146,5 +195,6 @@
     width: 100%;
     height: 100%;
     display: block;
+
 
 </style>
