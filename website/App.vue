@@ -10,22 +10,31 @@
         <div class="components-title">弹出层组</div>
 
         <div class="components-links">
+          <router-link to="popover">
+            ModPopover
+            <span class="cn-name">气泡层</span>
+          </router-link>
+
           <router-link to="dialog">
             ModDialog
             <span class="cn-name">弹窗</span>
           </router-link>
+
           <router-link to="alert">
             ModAlert
             <span class="cn-name">提示窗</span>
           </router-link>
+
           <router-link to="confirm">
             ModConfirm
             <span class="cn-name">确认窗</span>
           </router-link>
+          
           <router-link to="toast">
             ModToast
             <span class="cn-name">轻提示</span>
           </router-link>
+
         </div>
       </div>
 
@@ -146,4 +155,9 @@
     .view-actions
       padding: 5px 0;
 
+    .view-tip
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 10px;
 </style>

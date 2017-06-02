@@ -11,6 +11,7 @@ import Banner from '../pages/carousel/banner'
 import Image from '../pages/image'
 import Tab from '../pages/tab'
 import Pagination from '../pages/pagination'
+import Popover from '../pages/popover/popover'
 
 import config from '../../config'
 
@@ -80,6 +81,11 @@ let router = new Router({
       path: '/pagination',
       name: 'pagination',
       component: Pagination
+    },
+    {
+      path: '/popover',
+      name: 'Popover',
+      component: Popover
     }
   ]
 });

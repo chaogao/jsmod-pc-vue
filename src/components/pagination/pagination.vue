@@ -93,7 +93,7 @@
             if (start > 1) {
               renderDatas.push({
                 type: PAGE_TYPE.OMIT,
-                page: '...'
+                page: null
               });
             }
         }

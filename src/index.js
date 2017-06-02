@@ -20,6 +20,8 @@ import { ModTab, ModTabItem } from './components/tab';
 
 import { ModPagination, PAGE_TYPE } from './components/pagination';
 
+import { ModPopover } from './components/popover';
+
 
 import './styles/utils.styl';
 import './styles/transition.styl';
@@ -37,7 +39,8 @@ const Components = {
   ModImage,
   ModTab,
   ModTabItem,
-  ModPagination
+  ModPagination,
+  ModPopover
 }
 
 const install = (Vue, options) => {

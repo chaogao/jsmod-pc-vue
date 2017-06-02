@@ -63,7 +63,7 @@
       class: {
         type: String,
       },
-      
+
       clickReload: {
         type: Boolean,
         default: false
@@ -154,10 +154,19 @@
         // 重置以前的设置
         this.imageScaleStyle = {};
         this.$nextTick(() => {
-          this.imageScaleStyle = scale(this.$refs.img,
-            this.$el.offsetWidth,
-            this.$el.offsetHeight,
-            this.scale);
+          let width = this.$el.offsetWidth;
+          let height = this.$el.offsetHeight;
+          if (width == 0 || height == 0) {
+            width = parseFloat(this.imageStyle.width);
+            height = parseFloat(this.imageStyle.height);
+          }
+
+          if (isNaN(width) || isNaN(height)) {
+            return;
+          }
+
+
+          this.imageScaleStyle = scale(this.$refs.img, width, height, this.scale);
         });
       },
 
