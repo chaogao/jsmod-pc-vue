@@ -29,7 +29,7 @@
             ModConfirm
             <span class="cn-name">确认窗</span>
           </router-link>
-          
+
           <router-link to="toast">
             ModToast
             <span class="cn-name">轻提示</span>
@@ -112,7 +112,9 @@
           width: 100%;
 
     .components-router-view
-      flex: 1 1 auto;
+      width: 0;
+      flex: 1;
+      padding-right: 140px;
 
   .components-group
     padding: 5px;
@@ -145,12 +147,13 @@
           font-size: 12px;
 
   .components-view
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     padding: 5px;
 
     .view-title
       color: main-color;
       margin-bottom: 5px;
+      font-size: 16px;
 
     .view-actions
       padding: 5px 0;

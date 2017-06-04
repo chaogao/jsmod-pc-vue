@@ -2,13 +2,18 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import Jsmod from '../src'
 import router from './router'
-import 'website/assets/reset.css'
 
+import Jsmod from '../src'
 Vue.use(Jsmod);
 
-Vue.config.productionTip = false
+import JCode from './tools/code'
+Vue.component('JCode', JCode);
+
+import VueMarkdown from 'vue-markdown'
+Vue.component('VueMarkdown', VueMarkdown);
+
+import 'website/assets/main.styl'
 
 new Vue({
   el: '#app',

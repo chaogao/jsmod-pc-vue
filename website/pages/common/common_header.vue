@@ -37,7 +37,7 @@ export default {
     position: relative;
     color: main-color;
     border-left: 5px solid main-color;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 
     .title
       font-size: 16px;

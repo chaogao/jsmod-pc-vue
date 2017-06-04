@@ -23,7 +23,8 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-      'website': resolve('website')
+      'website': resolve('website'),
+      'hljs': 'highlightjs/highlight.pack.js'
     }
   },
   module: {
@@ -53,6 +54,10 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\.md$/,
+        loader: 'raw-loader'
       }
     ]
   }

@@ -26,21 +26,8 @@ html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 {
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     display: block;
 }
-a, input, select, button{
-    font-family:'Microsoft YaHei',arial,helvetica,sans-serif;
-}
 a{
     text-decoration: none;
-}
-body {
-    font-family:'Microsoft YaHei',arial,helvetica,sans-serif;
-    -webkit-text-size-adjust:none;
-    font-size: 14px;
-    color: #666;
-}
-
-ol, ul {
-    list-style: none;
 }
 
 blockquote, q {

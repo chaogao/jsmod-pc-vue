@@ -9,6 +9,12 @@
         <i class="iconjsmod iconjsmod-sousuo"></i>
         <span>本例源码</span>
       </a>
+
+      <a class="show-api" href="javascript:void(0)" v-on:click="() => {this.$emit('api')}">
+        <i class="iconjsmod iconjsmod-question"></i>
+        <span>显示API</span>
+      </a>
+
     </div>
 
 		<slot v-if="isShowNotFound" name="header">
@@ -111,12 +117,20 @@ export default {
     a {
       color: main-color;
       text-align: left;
-      display: block;
-      padding: 10px 5px;
+      display: inline-block;
+      padding: 10px 15px;
 
       &:hover {
         background: #efefef;
       }
+    }
+
+    .show-api {
+      position: fixed;
+      right: 10px;
+      top: 100px;
+      background: #f7f7f7;
+      z-index: 99;
     }
 
     i {

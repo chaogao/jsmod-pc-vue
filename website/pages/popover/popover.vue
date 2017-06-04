@@ -1,37 +1,42 @@
 <template>
-  <layout title="Popover" source="popover/popover.vue">
+  <layout title="Popover" source="popover/popover.vue" v-on:api="showApi = true">
     <div class="components-view">
-      <div class="view-title">基础实例</div>
-
-      <mod-popover target-type="right, top, center">
-        <mod-button :inline="true" >鼠标点击</mod-button>
-
-        <div class="my-content" slot="content">
-          hello jsmod
-        </div>
-      </mod-popover>
-
-      <mod-popover trigger="hover" target-type="bottom">
-        <mod-button :inline="true">鼠标划过</mod-button>
-
-        <div class="my-content" slot="content">
-          hello jsmod
-        </div>
-      </mod-popover>
+      <j-code :overview="true" :source="code.overview"></j-code>
     </div>
 
 
     <div class="components-view">
-      <div class="view-title">各个位置信息</div>
+      <div class="view-title">基础实例</div>
 
-      <div class="view-tip">
-        targetType 参数由三个字段组成，每个字段可选值有：'top', 'bottom', 'left', 'right', 'center'(center可以省略)。</br>
-        例如：第一个值选择了 'top'，表示在目标元素上方，第二个值选择了 'left' 表示在目标元素的左上角，第三个元素选择了 'right' 表示在左上角的右侧
+      <div class="view-demo" id="demo-base">
+        <mod-popover target-type="right, top, center">
+          <mod-button :inline="true" >鼠标点击</mod-button>
+
+          <div class="my-content" slot="content">
+            hello jsmod
+          </div>
+        </mod-popover>
+
+        <mod-popover trigger="hover" target-type="bottom">
+          <mod-button :inline="true">鼠标划过</mod-button>
+
+          <div class="my-content" slot="content">
+            hello jsmod
+          </div>
+        </mod-popover>
       </div>
 
-      <div class="select-wrap">
-        <span>点击相应的位置，设置 targetType </span>
+      <j-code :source="code.base"></j-code>
 
+    </div>
+
+
+    <div class="components-view">
+      <div class="view-title">targetType 参数说明</div>
+
+      <j-code :title="false" :source="code.position"></j-code>
+
+      <div class="select-wrap">
         <div class="target-wrap">
           <div class="target-box">
 
@@ -100,6 +105,9 @@
           hello jsmod
         </div>
       </mod-popover>
+
+      <j-code :source="code.arrow"></j-code>
+
     </div>
 
 
@@ -121,6 +129,8 @@
           hello jsmod
         </div>
       </mod-popover>
+
+      <j-code :source="code.hover"></j-code>
     </div>
 
     <div class="components-view">
@@ -135,6 +145,9 @@
           hello jsmod
         </div>
       </mod-popover>
+
+      <j-code :source="code.event"></j-code>
+
     </div>
 
     <div class="components-view">
@@ -147,6 +160,9 @@
           hello jsmod
         </div>
       </mod-popover>
+
+      <j-code :source="code.offset"></j-code>
+
     </div>
 
 
@@ -165,13 +181,14 @@
           </div>
         </div>
       </mod-popover>
+
+      <j-code :source="code.updatePos"></j-code>
+
     </div>
 
 
     <div class="components-view">
       <div class="view-title">手动控制 popover 显示|隐藏</div>
-
-      <div class="view-tip">使用 v-model 绑定显示|隐藏状态</div>
 
       <mod-popover target-type="top" v-model="show2" trigger="manual">
         <mod-button :inline="true" @click="show2 = true">点击显示</mod-button>
@@ -180,6 +197,8 @@
           <a href="javascript:void(0)" @click="show2 = false">关闭</a>
         </div>
       </mod-popover>
+
+      <j-code :source="code.manual"></j-code>
     </div>
 
 
@@ -191,14 +210,22 @@
 
         <mod-image slot="content" :width="260" :height="405" src="https://oajua4pqj.qnssl.com/o_1bhj8vas16rk1ffc1jhj1uhc13sg7.png"></mod-image>
       </mod-popover>
+
+      <j-code :source="code.background"></j-code>
     </div>
 
+
+    <mod-layer direction="horizontal" width="80%" v-model="showApi">
+      <j-code  :api="true" :source="api"></j-code>
+    </mod-layer>
 
   </layout>
 </template>
 
 <script>
   import Layout from '../common/common_layout';
+  import code from './popover.ch';
+  import api from './popover.ch.api.md'
 
   export default {
     data () {
@@ -208,7 +235,10 @@
         targetType: 'top',
         show: 0,
         show2: false,
-        loadedData: null
+        loadedData: null,
+        code: code,
+        api: api,
+        showApi: false
       }
     },
     methods: {
@@ -328,6 +358,7 @@
       background: #fff;
       position: relative;
       margin-bottom: 50px;
+      background: url('~website/assets/logo.jpeg') no-repeat center center;
 
       a
         position: absolute;

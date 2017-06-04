@@ -8,6 +8,8 @@ import { ModAlert } from './components/alert';
 import { ModConfirm } from './components/confirm';
 import { ModToast } from './components/toast';
 
+import { ModLayer } from './components/layer';
+
 import { ModButton } from './components/button';
 
 import { ModCarousel } from './components/carousel';
@@ -40,7 +42,8 @@ const Components = {
   ModTab,
   ModTabItem,
   ModPagination,
-  ModPopover
+  ModPopover,
+  ModLayer
 }
 
 const install = (Vue, options) => {
