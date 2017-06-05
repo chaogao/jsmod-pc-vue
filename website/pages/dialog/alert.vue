@@ -1,5 +1,9 @@
 <template>
   <layout title="Alert" source="dialog/alert.vue">
+    <div class="components-view">
+      <j-code :overview="true" :source="code.overview"></j-code>
+    </div>
+
     <div class="button-wrap">
       <mod-alert v-model="show1"  content="购买成功！"></mod-alert>
       <mod-button v-on:click="show1 = !show1" >显示</mod-button>
@@ -19,6 +23,8 @@
 
 <script>
   import Layout from '../common/common_layout';
+  import code from './alert.ch';
+
 
   export default {
     data () {
@@ -26,6 +32,7 @@
         show1: false,
         show2: false,
         show3: false,
+        code: code
       }
     },
 

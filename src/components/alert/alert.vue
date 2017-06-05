@@ -21,13 +21,13 @@
 <script>
   import { ModDialog } from '../dialog';
   import { ModButton } from '../button';
+  import { customEvent } from '../utils/event';
+  import ShowMixin from '../utils/show.mixin';
 
   export default {
+    mixins: [ ShowMixin ],
+
     props: {
-      value: {
-        type: Boolean,
-        default: false
-      },
       buttonCustomStyle: {
         type: Object,
         default () {
@@ -36,29 +36,30 @@
           }
         }
       },
+
       content: {
         type: String,
         default: ''
       },
+
       width: {
         type: [String, Number],
         default: 520
       },
+
       useIscroll: {
         type: Boolean,
         default: true
       },
+
       title: {
         type: String,
         default: ''
       },
+
       btn: {
         type: String,
         default: '确认'
-      },
-      onClick: {
-        type: Function,
-        default: () => {}
       }
     },
 
@@ -68,37 +69,16 @@
       }
     },
 
-    created () {
-      if (this.value !== undefined) {
-        this.canShow = this.value
-      }
-    },
-
-    watch: {
-      value (val) {
-        this.canShow = val;
-      },
-
-      canShow () {
-        this.$emit('input', this.canShow);
-      }
-    },
-
     methods: {
       onFooterClick () {
-        let returnValue = this.onClick();
-        let e = new Event('click');
+        let e = customEvent('click');
 
         this.$emit('click', e);
 
-        if (returnValue !== false && e.cancelable === false) {
+        if (e.isPreventDefault === false) {
           this.canShow = false;
         }
-      },
-
-      hide () {
-        this.canShow = false;
-      },
+      }
     },
 
     components: {

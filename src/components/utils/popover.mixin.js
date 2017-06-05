@@ -207,9 +207,11 @@ export default {
     },
 
     getBounds (element) {
+      let rect = element.getBoudingClientRect();
+
       return {
-        width: element.offsetWidth,
-        height: element.offsetHeight,
+        width: parseInt(rect.width),
+        height: parseInt(rect.height),
         top: element.offsetTop,
         left: element.offsetLeft
       }
