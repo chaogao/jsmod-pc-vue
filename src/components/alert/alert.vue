@@ -1,8 +1,10 @@
 <template>
-  <mod-dialog v-model="canShow" background-color="rgba(0, 0, 0, 0)" :width="width" :isMaskClickHide="false" :useIscroll="useIscroll">
+  <mod-dialog v-model="canShow" background-color="rgba(0, 0, 0, 0)" :width="width" :isMaskClickHide="false">
     <div slot="header">
       <div class="jsmod-alert-title">
-        {{ title }}
+        <slot name="title">
+          <div v-html="title"></div>
+        </slot>
       </div>
     </div>
 
@@ -10,10 +12,12 @@
       <slot><div v-html="content"></div></slot>
     </div>
 
-    <div class="jsmod-alert-footer" slot="footer">
-      <mod-button  v-on:click="onFooterClick" :inline="true" :customStyle="buttonCustomStyle">
-        {{ btn }}
-      </mod-button>
+    <div class="jsmod-alert-footer" ref="footer" slot="footer">
+      <slot name="footer">
+        <mod-button  v-on:click="onFooterClick" :inline="true" :customStyle="buttonCustomStyle">
+          {{ btn }}
+        </mod-button>
+      </slot>
     </div>
   </mod-dialog>
 </template>
@@ -47,11 +51,6 @@
         default: 520
       },
 
-      useIscroll: {
-        type: Boolean,
-        default: true
-      },
-
       title: {
         type: String,
         default: ''
@@ -69,7 +68,24 @@
       }
     },
 
+
+    mounted () {
+      this.findCloseBtn();
+    },
+
     methods: {
+      findCloseBtn () {
+        let $close = this.$refs.footer.querySelectorAll('[mod-confirm]');
+
+        $close = [...$close];
+
+        $close.forEach(($item) => {
+          $item.addEventListener('click', () => {
+            this.onFooterClick();
+          });
+        });
+      },
+
       onFooterClick () {
         let e = customEvent('click');
 

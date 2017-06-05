@@ -118,10 +118,6 @@
 
       customStyle: {
         type: Object
-      },
-
-      class: {
-        type: String
       }
     }
 
