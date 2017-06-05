@@ -66,7 +66,6 @@
 
     methods: {
       _onClick (e) {
-        debugger;
         if (this.status != 'loading' && this.status != 'disabeld') {
           this.$emit('click');
           this.onClick(e);
