@@ -31,6 +31,7 @@ class Swiper {
     this.$box = this._options.container
     this.$container = this._options.container.querySelector('.jsmod-carousel-swiper')
     this.$items = this.$container.querySelectorAll(this._options.item)
+    this.$items = [...this.$items];
 
     if (this._options.useFade) {
       this._options.loop = false;
@@ -228,6 +229,7 @@ class Swiper {
     const me = this
     me._itemDestoy()
     me.$items = me.$container.querySelectorAll(me._options.item)
+    me.$items = [...me.$items]
     me.$items[1] && me.$items[1].addEventListener('webkitTransitionEnd', me.transitionEndHandler, false)
     me._movePosition(num)
     me._setOffset()

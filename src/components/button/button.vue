@@ -66,6 +66,7 @@
 
     methods: {
       _onClick (e) {
+        debugger;
         if (this.status != 'loading' && this.status != 'disabeld') {
           this.$emit('click');
           this.onClick(e);
@@ -142,8 +143,16 @@
     position: relative;
     overflow: hidden;
 
+    .jsmod-button-text,
+    .jsmod-button-text-loading
+      position: relative;
+      z-index: 1;
+
+
     .jsmod-button-icon
       vertical-align: middle;
+      position: relative;
+      z-index: 1;
 
       i
         font-size: 18px;
@@ -160,7 +169,7 @@
       border: 1px solid border-color;
 
     &.jsmod-button-pressing
-      &:after
+      &:before
         content: "";
         position: absolute;
         left: 0;

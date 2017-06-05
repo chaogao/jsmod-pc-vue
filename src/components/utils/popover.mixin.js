@@ -207,7 +207,7 @@ export default {
     },
 
     getBounds (element) {
-      let rect = element.getBoudingClientRect();
+      let rect = element.getBoundingClientRect();
 
       return {
         width: parseInt(rect.width),

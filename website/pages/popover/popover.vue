@@ -9,7 +9,7 @@
       <div class="view-title">基础实例</div>
 
       <div class="view-demo" id="demo-base">
-        <mod-popover target-type="right, top, center">
+        <mod-popover >
           <mod-button :inline="true" >鼠标点击</mod-button>
 
           <div class="my-content" slot="content">

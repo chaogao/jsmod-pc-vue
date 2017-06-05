@@ -42,7 +42,10 @@
     },
 
     mounted () {
-      this.$refs.code.querySelectorAll('pre').forEach(($code) => {
+      let $pres = this.$refs.code.querySelectorAll('pre');
+
+      $pres = [...$pres];
+      $pres.forEach(($code) => {
         hljs.highlightBlock($code);
       });
     },

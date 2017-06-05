@@ -155,6 +155,7 @@
 
         this.tabs = [];
 
+        debugger;
         tabs.forEach((item) => {
           this.tabs.push({
             label: item.label

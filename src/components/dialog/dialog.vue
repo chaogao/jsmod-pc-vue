@@ -186,6 +186,7 @@
 
     &.jsmod-dialog-html-none-mask
       position: fixed;
+      z-index: 19999;
 
 
   .jsmod-dialog-solt-content
