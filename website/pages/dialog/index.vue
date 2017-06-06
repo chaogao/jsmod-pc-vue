@@ -1,36 +1,56 @@
 <template>
-  <layout title="Dialog" source="dialog/index.vue">
-    <div class="button-wrap">
+  <layout title="Dialog" source="dialog/index.vue" v-on:api="showApi = true">
+    <div class="components-view">
+      <j-code :overview="true" :source="code.overview"></j-code>
+    </div>
 
-      <mod-dialog v-model="show1" >
+    <div class="components-view">
+      <div class="view-title">基础实例</div>
+
+      <mod-dialog v-model="show1">
         <div class="base-dialog">
           hello jsmod
         </div>
       </mod-dialog>
 
-      <mod-button v-on:click="show1 = !show1" >基础弹层</mod-button>
-
-      <mod-dialog v-model="show2" >
-        <div class="base-scroll">
-          <div class="base-dialog-item" v-for="item in list">{{ item }}</div>
-        </div>
-      </mod-dialog>
-
-      <mod-button v-on:click="show2 = !show2" >内容区域滚动</mod-button>
-
-
-      <mod-dialog v-model="show3" :useMask="false">
+      <mod-dialog v-model="show1_1" :width="200" :height="200">
         <div class="base-dialog">
           hello jsmod
-
-          <mod-button v-on:click="show3 = false" >关闭</mod-button>
         </div>
       </mod-dialog>
 
-      <mod-button v-on:click="show3 = !show3" >不显示遮盖层</mod-button>
+      <mod-dialog v-model="show1_2" width="80%" height="80%">
+        <div class="base-dialog">
+          hello jsmod
+        </div>
+      </mod-dialog>
+
+      <mod-button :inline="true" v-on:click="show1 = !show1" >显示（自动宽高）</mod-button>
+      <mod-button :inline="true" v-on:click="show1_1 = !show1_1" >显示（固定值）</mod-button>
+      <mod-button :inline="true" v-on:click="show1_2 = !show1_2" >显示（固定百分比）</mod-button>
+
+      <j-code :source="code.base"></j-code>
+    </div>
+
+    <div class="components-view">
+      <div class="view-title">向上方偏移</div>
+
+      <mod-dialog v-model="show2" :offsetTop="-200">
+        <div class="base-dialog">
+          hello jsmod
+        </div>
+      </mod-dialog>
+
+      <mod-button :inline="true" v-on:click="show2 = !show2" >显示</mod-button>
+
+      <j-code :source="code.offset"></j-code>
+    </div>
 
 
-      <mod-dialog v-model="show4" >
+    <div class="components-view">
+      <div class="view-title">自动更新位置</div>
+
+      <mod-dialog v-model="show3" >
         <div class="base-scroll">
           <div v-for="item in list2" clas="base-dialog-item">{{ item }}</div>
 
@@ -38,21 +58,32 @@
         </div>
       </mod-dialog>
 
-      <mod-button v-on:click="show4 = !show4" >自动计算位置</mod-button>
+      <mod-button :inline="true" v-on:click="show3 = !show3" >显示</mod-button>
+
+      <j-code :source="code.update"></j-code>
+    </div>
 
 
-      <mod-dialog width="90%" height="30%" v-model="show5" >
-        <div class="base-scroll">
-          <b>宽度90%，高度30%，旋转屏幕，弹层保持设置的百分比</b>
-          <div v-for="item in list3" clas="base-dialog-item">{{ item }}</div>
+    <div class="components-view">
+      <div class="view-title">不显示遮罩层</div>
 
-          <mod-button v-on:click="list3.push('一条数据')" >添加</mod-button>
+      <mod-dialog v-model="show4" :useMask="false">
+        <div class="base-dialog">
+          hello jsmod
+
+          <mod-button v-on:click="show4 = false" >关闭</mod-button>
         </div>
       </mod-dialog>
 
-      <mod-button v-on:click="show5 = !show5" >宽高百分比</mod-button>
+      <mod-button :inline="true" v-on:click="show4 = !show4" >显示</mod-button>
 
-      <mod-dialog width="90%" v-model="show6" backgroundColor="rgba(0, 0, 0, 0)">
+      <j-code :source="code.mask"></j-code>
+    </div>
+
+    <div class="components-view">
+      <div class="view-title">复合弹层</div>
+
+      <mod-dialog :height="500" width="40%" v-model="show6" >
         <div slot="header" class="base-header">
           商品描述
         </div>
@@ -68,33 +99,67 @@
         </div>
 
         <div slot="footer" class="base-footer">
-          <mod-button :status="checkoutStatus" v-on:click="checkout">
+          <mod-button  :status="checkoutStatus" v-on:click="checkout">
             结算
             <span slot="loading">结算中</span>
           </mod-button>
         </div>
       </mod-dialog>
 
-      <mod-button v-on:click="show6 = !show6" >顶部，底部，复合弹层</mod-button>
+      <mod-button :inline="true" v-on:click="show6 = !show6" >显示</mod-button>
 
-
-      <mod-button v-on:click="showDialog" >API调用</mod-button>
+      <j-code :source="code.complex"></j-code>
     </div>
+
+    <div class="components-view">
+      <div class="view-title">透明背景</div>
+
+      <mod-dialog  v-model="show7" :backgroundColor="false" >
+        <mod-image :width="400" :ratio="1" src="https://oajua4pqj.qnssl.com/o_1bhto5e7k15lq1j3513ufjtv1gfr7.png"></mod-image>
+      </mod-dialog>
+
+      <mod-button :inline="true" v-on:click="show7 = !show7" >显示</mod-button>
+
+      <j-code :source="code.opacity"></j-code>
+    </div>
+
+
+    <div class="components-view">
+      <div class="view-title">API 调用</div>
+
+      <mod-button v-on:click="showDialog" :inline="true">API调用</mod-button>
+
+      <j-code :source="code.api"></j-code>
+    </div>
+
+
+    <mod-layer direction="horizontal" width="80%" v-model="showApi">
+      <j-code  :api="true" :source="api"></j-code>
+    </mod-layer>
   </layout>
 </template>
 
 <script>
   import Layout from '../common/common_layout';
+  import code from './index.ch';
+  import api from './index.ch.api.md'
+
 
   export default {
     data () {
       return {
+        code: code,
         show1: false,
+        show1_1: false,
+        show1_2: false,
         show2: false,
         show3: false,
         show4: false,
         show5: false,
         show6: false,
+        show7: false,
+        showApi: false,
+        api: api,
         checkoutStatus: 'default',
         list: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'k', 'm', 'o'],
         list2: ['一条数据'],
@@ -154,12 +219,19 @@
     line-height: 24px;
     border-bottom: 1px solid border-color;
     background: #fff;
-
+    height: 50px;
+    line-height: 50px;
+    background: sub-color;
+    color: #fff;
 
   .base-footer
     padding: 10px;
     border-top: 1px solid border-color;
     background: #fff;
+    height: 100px;
+    background: sub-color;
+    padding-top: 30px;
+    text-align: center;
 
   .product-title
     font-size: 14px;

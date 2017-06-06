@@ -9,7 +9,7 @@ let InjectTools = {
     if (!this.$root) {
       this.createRoot();
     }
-
+    
     $el.style.zIndex = DIALOG_ZINDEX_BEGIN + zIndexOffset;
     zIndexOffset += 1;
     this.$root.appendChild($el);
@@ -52,6 +52,11 @@ export default {
   },
 
   mounted () {
+    // 修正使用 api 加入的 dialog 的 z-index
+    if (this.__jsmod_dialog_zindex) {
+      this.$el.style.zIndex = DIALOG_ZINDEX_BEGIN + zIndexOffset;
+    }
+
     if (this.$el && !this.__jsmod_dialog_zindex) {
       this.__jsmod_dialog_zindex = InjectTools.append(this.$el);
     }

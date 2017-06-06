@@ -1,7 +1,7 @@
 .jsmod-mask-enter-active
-  opacity: 1;
-  transition-duration: 400ms;
-  transition-property: transform, opacity;
+  background: rgba(55, 55, 55, 0.6);
+  transition-duration: 300ms;
+  transition-property: transform, background;
 
   &.jsmod-layer-vertical
     .jsmod-layer-content
@@ -16,7 +16,7 @@
       transform: translateY(0%);
 
 .jsmod-mask-enter
-  opacity: 0;
+  background: rgba(55, 55, 55, 0.2);
 
   &.jsmod-layer-vertical
     .jsmod-layer-content
@@ -62,6 +62,8 @@
         transform: translateX(100%);
 
 .jsmod-mask-leave
+  opacity: 1;
+
   &.jsmod-layer-vertical
     .jsmod-layer-content
       transform: translateY(0%)!important;

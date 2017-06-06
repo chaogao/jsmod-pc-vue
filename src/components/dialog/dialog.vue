@@ -51,12 +51,12 @@
         default: 0
       },
       backgroundColor: {
-        type: String,
+        type: [String, Boolean],
         default: '#fff'
       },
       soltBackgroundColor: {
-        type: String,
-        default: '#fff'
+        type: [String, Boolean],
+        default: false
       }
     },
 
@@ -86,12 +86,18 @@
 
     computed: {
       htmlStyle () {
-        let obj = {
-          backgroundColor: this.backgroundColor
+        let obj = {};
+
+        if (this.backgroundColor) {
+          obj.backgroundColor = this.backgroundColor
         }
 
         obj.width = this.calcWidth + 'px';
         obj.height = this.calcHeight + 'px';
+
+        if (this.offsetTop) {
+          obj.marginTop = this.offsetTop + 'px';
+        }
 
         return obj;
       }
@@ -192,6 +198,6 @@
   .jsmod-dialog-solt-content
     overflow: hidden;
     position: relative;
-    flex: 1 1 auto;
+    flex: 1;
 
 </style>
