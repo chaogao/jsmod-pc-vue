@@ -1,5 +1,5 @@
 <template>
-  <mod-dialog v-model="canShow" background-color="rgba(0, 0, 0, 0)" :width="width" :isMaskClickHide="false">
+  <mod-dialog v-model="canShow" :backgroundColor="'#fff'" :extendStyle="baseStyle" :width="width" :isMaskClickHide="false">
     <div slot="header">
       <div class="jsmod-alert-title">
         <slot name="title">
@@ -27,6 +27,7 @@
   import { ModButton } from '../button';
   import { customEvent } from '../utils/event';
   import ShowMixin from '../utils/show.mixin';
+
 
   export default {
     mixins: [ ShowMixin ],
@@ -59,15 +60,21 @@
       btn: {
         type: String,
         default: '确认'
+      },
+
+      onClick: {
+        type: Function,
+        default: () => {}
       }
     },
 
     data () {
       return {
-        canShow: false
+        baseStyle: {
+          'border-radius': '10px'
+        }
       }
     },
-
 
     mounted () {
       this.findCloseBtn();
@@ -88,10 +95,11 @@
 
       onFooterClick () {
         let e = customEvent('click');
+        let returnValue = this.onClick();
 
         this.$emit('click', e);
 
-        if (e.isPreventDefault === false) {
+        if (e.isPreventDefault === false && returnValue !== false) {
           this.canShow = false;
         }
       }

@@ -4,7 +4,7 @@
       <slot></slot>
     </div>
 
-    <transition v-bind:name="useFade ? 'jsmod-mask' : 'jsmod-mask-none'">
+    <transition v-bind:name="useFade ? 'jsmod-transition-popover' : 'jsmod-mask-none'">
       <div v-show="canShow" ref="content" class="jsmod-popover-content" :style="[contentStyle]">
         <slot name="content"></slot>
         <span v-if="arrow" :style="arrowStyle" class="jsmod-popover-arrow">

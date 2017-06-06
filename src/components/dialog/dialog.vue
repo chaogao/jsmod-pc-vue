@@ -22,6 +22,7 @@
 <script>
   import DialogMixin from '../utils/dialog.mixin';
   import ShowMixin from '../utils/show.mixin';
+  import objectAssign from 'object-assign';
 
   export default {
     props: {
@@ -53,6 +54,12 @@
       backgroundColor: {
         type: [String, Boolean],
         default: '#fff'
+      },
+      extendStyle: {
+        type: Object,
+        default () {
+          return {};
+        }
       },
       soltBackgroundColor: {
         type: [String, Boolean],
@@ -98,6 +105,8 @@
         if (this.offsetTop) {
           obj.marginTop = this.offsetTop + 'px';
         }
+
+        objectAssign(obj, this.extendStyle);
 
         return obj;
       }

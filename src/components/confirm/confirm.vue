@@ -1,8 +1,10 @@
 <template>
-  <mod-dialog v-model="canShow" background-color="rgba(0, 0, 0, 0)" :width="width" :isMaskClickHide="false" :useIscroll="useIscroll">
+  <mod-dialog v-model="canShow" :backgroundColor="'#fff'" :extendStyle="baseStyle" :width="width" :isMaskClickHide="false" >
     <div slot="header">
       <div class="jsmod-confirm-title">
-        {{ title }}
+        <slot name="title">
+          <div v-html="title"></div>
+        </slot>
       </div>
     </div>
 
@@ -10,15 +12,16 @@
       <slot><div v-html="content"></div></slot>
     </div>
 
-    <div slot="footer">
-      <div class="jsmod-confirm-footer">
-        <mod-button v-on:click="_onBtnNo" :inline="true" :customStyle="buttonNoStyle">
+    <div class="jsmod-confirm-footer" ref="footer" slot="footer">
+      <slot name="footer">
+        <mod-button class="jsmod-confirm-footer-btn" v-on:click="_onBtnNo" :inline="true" :customStyle="btnNoStyle">
           {{ btnNo }}
         </mod-button>
-        <mod-button v-on:click="_onBtnOk" :inline="true" :customStyle="buttonOkStyle">
+
+        <mod-button class="jsmod-confirm-footer-btn" v-on:click="_onBtnOk" :inline="true" :customStyle="btnOkStyle">
           {{ btnOk }}
         </mod-button>
-      </div>
+      </slot>
     </div>
   </mod-dialog>
 </template>
@@ -26,8 +29,12 @@
 <script>
   import { ModDialog } from '../dialog';
   import { ModButton } from '../button';
+  import { customEvent } from '../utils/event';
+  import ShowMixin from '../utils/show.mixin';
 
   export default {
+    mixins: [ShowMixin],
+
     props: {
       value: {
         type: Boolean,
@@ -37,10 +44,6 @@
         type: [String, Number],
         default: 520
       },
-      useIscroll: {
-        type: Boolean,
-        default: true
-      },
       title: {
         type: String,
         default: ''
@@ -49,10 +52,12 @@
         type: String,
         default: '确认'
       },
+
       btnNo: {
         type: String,
         default: '取消'
       },
+
       content: {
         type: String,
         default: ''
@@ -63,7 +68,7 @@
         default: () => {}
       },
 
-      buttonOkStyle: {
+      btnOkStyle: {
         type: Object,
         default () {
           return {
@@ -72,7 +77,7 @@
         }
       },
 
-      buttonNoStyle: {
+      btnNoStyle: {
         type: Object,
         default () {
           return {
@@ -87,50 +92,63 @@
     data () {
       return {
         canShow: false,
+        baseStyle: {
+          'border-radius': '10px'
+        }
       }
     },
 
-    created () {
-      if (this.value !== undefined) {
-        this.canShow = this.value
-      }
-    },
-
-    watch: {
-      value (val) {
-        this.canShow = val;
-      },
-
-      canShow () {
-        this.$emit('input', this.canShow);
-      }
+    mounted () {
+      this.findBtn();
     },
 
     methods: {
+      findBtn () {
+        let $no = this.$refs.footer.querySelectorAll('[mod-no]');
+
+        $no = [...$no];
+
+        $no.forEach(($item) => {
+          $item.addEventListener('click', () => {
+            this._onBtnNo();
+          });
+        });
+
+        let $ok = this.$refs.footer.querySelectorAll('[mod-ok]');
+
+        $ok = [...$ok];
+
+        $ok.forEach(($item) => {
+          $item.addEventListener('click', () => {
+            this._onBtnOk();
+          });
+        });
+      },
+
       _onBtnOk () {
+        let evt = customEvent('click');
+        evt.result = true;
+        this.$emit('click', evt);
+
         let returnValue = this.onClick({
-          type: true
+          result: true
         });
 
-        this.$emit('click', {
-          type: true
-        });
-
-        if (returnValue !== false) {
+        if (evt.isPreventDefault === false && returnValue !== false) {
           this.canShow = false;
         }
       },
 
       _onBtnNo () {
+        let evt = customEvent('click');
+        evt.result = false;
+        this.$emit('click', evt);
+
         let returnValue = this.onClick({
-          type: false
+          result: false
         });
 
-        this.$emit('click', {
-          type: false
-        });
-
-        if (returnValue !== false) {
+        if (evt.isPreventDefault === false && returnValue !== false) {
           this.canShow = false;
         }
       },
@@ -173,7 +191,7 @@
     background: #fff;
     border-top: 1px solid border-color;
 
-    a
+    .jsmod-confirm-footer-btn
       margin: 0 10px;
 
 </style>

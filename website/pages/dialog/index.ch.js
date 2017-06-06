@@ -5,7 +5,7 @@ code.overview = `
 
 * 使用 \`v-model\` 绑定显示（隐藏）状态
 * 无需设置宽高（如果固定建议还是设置），可自动计算位置
-* 使用 \`heade\` \`foote\` slot 可简单实现首尾三段布局
+* 使用 \`heade\` \`footer\` slot 可简单实现首尾三段布局
 `;
 
 code.base = `
