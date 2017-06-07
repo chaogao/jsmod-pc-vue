@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="components-root">
     <nav class="components-nav">
-      <router-link to="/" class="components-logo">
+      <router-link active-class="router-active" to="/" class="components-logo">
         <img src="./assets/logo.jpeg" />
       </router-link>
 
@@ -10,27 +10,27 @@
         <div class="components-title">弹出层组</div>
 
         <div class="components-links">
-          <router-link to="popover">
+          <router-link active-class="router-active" to="popover">
             ModPopover
             <span class="cn-name">气泡层</span>
           </router-link>
 
-          <router-link to="dialog">
+          <router-link active-class="router-active" to="dialog">
             ModDialog
             <span class="cn-name">弹窗</span>
           </router-link>
 
-          <router-link to="alert">
+          <router-link active-class="router-active" to="alert">
             ModAlert
             <span class="cn-name">提示窗</span>
           </router-link>
 
-          <router-link to="confirm">
+          <router-link active-class="router-active" to="confirm">
             ModConfirm
             <span class="cn-name">确认窗</span>
           </router-link>
 
-          <router-link to="toast">
+          <router-link active-class="router-active" to="toast">
             ModToast
             <span class="cn-name">轻提示</span>
           </router-link>
@@ -42,18 +42,18 @@
         <div class="components-title">操作控件组</div>
 
         <div class="components-links">
-          <router-link to="button">
+          <router-link active-class="router-active" to="button">
             ModButton
             <span class="cn-name">按钮</span>
           </router-link>
 
-          <router-link to="tab">
+          <router-link active-class="router-active" to="tab">
             ModTab
             <span class="cn-name">分栏</span>
           </router-link>
 
 
-          <router-link to="pagination">
+          <router-link active-class="router-active" to="pagination">
             ModPagination
             <span class="cn-name">分页</span>
           </router-link>
@@ -64,15 +64,15 @@
         <div class="components-title">展示控件组</div>
 
         <div class="components-links">
-          <router-link to="image">
+          <router-link active-class="router-active" to="image">
             ModImage
             <span class="cn-name">图片</span>
           </router-link>
-          <router-link to="carousel">
+          <router-link active-class="router-active" to="carousel">
             ModCarousel
             <span class="cn-name">滑动轮播</span>
           </router-link>
-          <router-link to="banner">
+          <router-link active-class="router-active" to="banner">
             ModBanner
             <span class="cn-name">广告展示</span>
           </router-link>
@@ -100,7 +100,7 @@
     flex-direction: row;
 
     .components-nav
-      width: 200px;
+      width: 230px;
       padding: 0 10px 10px 10px;
 
       .components-logo
@@ -136,9 +136,17 @@
         margin: 0 0 10px 0;
         color: main-color;
         display: inline-block;
-        width: 85px;
+        width: 100px;
         float: left;
         text-align: center;
+        padding: 5px;
+
+        &.router-active
+          background: main-color;
+          color: #fff;
+
+          .cn-name
+            color: #fff;
 
         .cn-name
           display: block;

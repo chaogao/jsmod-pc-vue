@@ -18,6 +18,16 @@ let InjectTools = {
     }
   },
 
+  methods: {
+    hide () {
+      this.canShow = false;
+    },
+
+    show () {
+      this.canShow = true;
+    }
+  },
+
   watch: {
     value: {
       handler: function (val) {

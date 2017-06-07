@@ -1,8 +1,5 @@
 <template>
-  <mod-dialog v-model="canShow"  :width="width" :useMask="false"
-    :useIscroll="false"
-    :soltBackgroundColor="'rgba(0, 0, 0, 0)'"
-    :backgroundColor="'rgba(0, 0, 0, 0)'">
+  <mod-dialog v-model="canShow" :width="width" :useMask="false" :backgroundColor="false">
 
     <div class="jsmod-totast">
       <div v-if="_icon" class="jsmod-toast-icon">
@@ -18,6 +15,7 @@
 
 <script>
   import { ModDialog } from '../dialog';
+  import ShowMixin from '../utils/show.mixin';
 
   const TOAST_TYPES = {
     'loading': {
@@ -44,34 +42,33 @@
   }
 
   export default {
+    mixins: [ ShowMixin ],
+
     props: {
       width: {
         type: [String, Number]
       },
-      value: {
-        type: Boolean,
-        default: false
-      },
+
       type: {
         type: String,
         default: 'default'
       },
-      useIscroll: {
-        type: Boolean,
-        default: true
-      },
+
       icon: {
         type: String,
         default: undefined
       },
+
       content: {
         type: String,
         default: undefined
       },
+
       timeout: {
         type: Number,
         default: undefined
       },
+
       onHide: {
         type: Function,
         default: () => {}
@@ -85,10 +82,6 @@
     },
 
     created () {
-      if (this.value !== undefined) {
-        this.canShow = this.value
-      }
-
       let timeout = this._timeout;
 
       if (timeout > 0) {
@@ -125,10 +118,6 @@
     },
 
     watch: {
-      value (val) {
-        this.canShow = val;
-      },
-
       timeout (val) {
         this._timer && clearTimeout(this._timer);
 
@@ -138,10 +127,7 @@
       },
 
       canShow (val) {
-        this.$emit('input', this.canShow);
-
         if (this.canShow == false) {
-          this.$emit('hide');
           this.onHide();
         }
 
@@ -153,12 +139,6 @@
           }, this._timeout);
         }
       }
-    },
-
-    methods: {
-      hide () {
-        this.canShow = false;
-      },
     },
 
     components: {
@@ -186,7 +166,7 @@
         font-size: 24px;
 
     .jsmod-toast-content
-      font-size: 13px;
+      font-size: 14px;
       text-align: center;
 
 </style>

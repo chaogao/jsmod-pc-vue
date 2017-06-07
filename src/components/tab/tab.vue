@@ -1,9 +1,10 @@
 <template>
   <div class="jsmod-tab">
-    <div :class="['jsmod-tab-card', tabWrapClass]">
-      <div :class="['jsmod-tab-card-item', tabClass]"  v-for="item, idx in tabs" v-on:click="currentInner = idx">
+    <div :class="['jsmod-tab-card', tabContainerClass]">
+      <div :class="['jsmod-tab-card-item', tabClass]"  v-for="item, idx in tabs" v-on:click="onClick(idx)" v-on:mouseenter="onHover(idx)" v-on:mouseleave="onLeave">
         <slot name="tab"
             :label="item.label"
+            :data="item.data"
             :active="idx == currentInner">
           <div :class="{'jsmod-tab-card-item-default': true, 'jsmod-tab-card-item-default-active': idx == currentInner}">
             {{ item.label }}
@@ -12,7 +13,7 @@
       </div>
     </div>
 
-    <div ref="container" :style="containerStyle" :class="['jsmod-tab-container', 'jsmod-carousel-swiper']">
+    <div ref="container" :style="containerStyle" :class="['jsmod-tab-container', 'jsmod-carousel-swiper', containerClass]">
       <slot></slot>
     </div>
   </div>
@@ -28,17 +29,26 @@
         default: 0
       },
 
+      trigger: {
+        type: String,
+        default: 'click'
+      },
+
+      hoverDelay: {
+        type: Number,
+        default: 100
+      },
+
       tabClass: {
         type: String
       },
 
-      tabWrapClass: {
+      tabContainerClass: {
         type: String
       },
 
-      enableTouch: {
-        type: Boolean,
-        default: true
+      containerClass: {
+        type: String
       },
 
       fade: {
@@ -111,6 +121,26 @@
         })
       },
 
+      onClick (idx) {
+        if (this.trigger == 'click') {
+          this.currentInner = idx;
+        }
+      },
+
+      onLeave () {
+        this.hoverTimer && clearTimeout(this.hoverTimer);
+      },
+
+      onHover (idx) {
+        if (this.trigger == 'hover') {
+          this.hoverTimer && clearTimeout(this.hoverTimer);
+
+          this.hoverTimer = setTimeout(() => {
+            this.currentInner = idx;
+          }, this.hoverDelay);
+        }
+      },
+
       getTabsIndex (idx) {
         let tabs = this.getTabs();
 
@@ -133,7 +163,6 @@
           item: '.jsmod-tab-item',
           interval: 0,
           height: 'auto',
-          enableTouch: this.enableTouch,
           useFade: this.fade
         }).on('swiped', (prev, index) => {
           self.currentInner = index;
@@ -157,7 +186,8 @@
 
         tabs.forEach((item) => {
           this.tabs.push({
-            label: item.label
+            label: item.label,
+            data: item.data || {}
           });
         });
 

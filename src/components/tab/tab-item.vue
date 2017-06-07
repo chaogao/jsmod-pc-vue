@@ -11,11 +11,31 @@
     props: {
       label: {
         type: String
+      },
+
+      data: {
+        type: Object
+      }
+    },
+
+    data () {
+      return {
+        height: 0
+      }
+    },
+
+    updated () {
+      let height = this.$el.offsetHeight;
+
+      if (height != this.height) {
+        this.height = height;
+        this.$parent.updateHeight();
       }
     },
 
     mounted () {
-      this.$parent.updateTabs(this.$el.offsetHeight);
+      this.height = this.$el.offsetHeight
+      this.$parent.updateTabs(this.height);
     }
   }
 </script>

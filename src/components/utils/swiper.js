@@ -282,9 +282,6 @@ class Swiper {
     index = index % this.realCount
     index = this._position.indexOf(index) - this._position.indexOf(this._current)
 
-    console.log(this._current);
-    console.log(this.index);
-
     me._moveIndex(index)
     me._setOffset()
     me._setTransition(options && options.duration)

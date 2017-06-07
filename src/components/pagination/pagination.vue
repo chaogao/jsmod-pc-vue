@@ -2,7 +2,7 @@
   <div class="jsmod-pagination">
     <ul class="jsmod-pagination-list">
       <li v-on:click="go(item.page)"  class="jsmod-pagination-list-item" v-for="item in renderDatas">
-        <slot name="item" :page="item.page" :type="item.type">
+        <slot name="item" :page="item.page" :type="item.type" :disabled="item.disabled">
           <a href="javascript:void(0)" v-bind:class="getClass(item)">{{ getLabel(item) }}</a>
         </slot>
       </li>
@@ -21,6 +21,11 @@
         default: 0
       },
 
+      autoHide: {
+        type: Boolean,
+        default: false
+      },
+
       pageCount: {
         type: Number
       },
@@ -29,11 +34,6 @@
         type: Number,
         default: 3
       },
-
-      autoHideControll: {
-        type: Boolean,
-        default: true
-      }
     },
 
     data () {
@@ -76,10 +76,11 @@
         end += offsetEnd;
 
 
-        if (page > 0) {
+        if (page > 0 || !this.autoHide) {
           renderDatas.push({
             type: PAGE_TYPE.PRE,
-            page: page - 1
+            page: page - 1,
+            disabled: page == 0
           });
         }
 
@@ -122,10 +123,11 @@
           });
         }
 
-        if (page != this.pageCount - 1) {
+        if (page != this.pageCount - 1 || !this.autoHide) {
           renderDatas.push({
             type: PAGE_TYPE.NEXT,
-            page: page + 1
+            page: page + 1,
+            disabled: page == this.pageCount - 1
           });
         }
 
@@ -153,6 +155,10 @@
 
         itemClass.push('jsmod-pagination-list-item-link-' + item.type);
 
+        if (item.disabled) {
+          itemClass.push('jsmod-pagination-list-item-link-disabled');
+        }
+
         return itemClass;
       },
 
@@ -173,6 +179,10 @@
       },
 
       go (page) {
+        if (page < 0 || page > this.pageCount - 1) {
+          return;
+        }
+
         if (page !== null) {
           this.current = page;
         }
@@ -206,7 +216,8 @@
             background: #efefef;
 
           &.jsmod-pagination-list-item-link-CURRENT,
-          &.jsmod-pagination-list-item-link-OMIT
+          &.jsmod-pagination-list-item-link-OMIT,
+          &.jsmod-pagination-list-item-link-disabled
             color: #999;
             cursor: text;
 
