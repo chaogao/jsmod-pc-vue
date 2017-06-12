@@ -19,7 +19,6 @@
 <script>
   import DialogMixin from '../utils/dialog.mixin';
   import ShowMixin from '../utils/show.mixin';
-  import IScroll from 'iscroll';
 
   export default {
     props: {

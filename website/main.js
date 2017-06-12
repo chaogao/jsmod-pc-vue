@@ -4,8 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-import Jsmod from '../src'
-Vue.use(Jsmod);
+// import Jsmod from '../src'
+// Vue.use(Jsmod);
+
+debugger;
+Vue.use(window['jsmod-pc']);
 
 import JCode from './tools/code'
 Vue.component('JCode', JCode);

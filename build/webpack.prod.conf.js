@@ -13,7 +13,7 @@ var env = config.build.env
 
 var webpackConfig = merge(baseWebpackConfig, {
   entry: {
-    'jsmod-mobile': './src/index.js'
+    'jsmod.pc': './src/index.js'
   },
   module: {
     rules: utils.styleLoaders({
