@@ -39,14 +39,14 @@
       <mod-pagination v-model="current"  :pageCount="10" v-on:active="onActive">
         <template slot="item" scope="props" >
           <a v-if="props.type == PAGE_TYPE.PAGE || props.type == PAGE_TYPE.CURRENT"
-            href="javasciprt:void(0)" :class="{'custom-link': true, 'custom-link-active': props.type == PAGE_TYPE.CURRENT}">{{ props.page + 1 }}</a>
+            href="javascript:void(0)" :class="{'custom-link': true, 'custom-link-active': props.type == PAGE_TYPE.CURRENT}">{{ props.page + 1 }}</a>
 
-          <a href="javasciprt:void(0)" class="custom-link" v-if="props.type == PAGE_TYPE.FIRST">首</a>
-          <a href="javasciprt:void(0)" class="custom-link" v-if="props.type == PAGE_TYPE.LAST">尾</a>
+          <a href="javascript:void(0)" class="custom-link" v-if="props.type == PAGE_TYPE.FIRST">首</a>
+          <a href="javascript:void(0)" class="custom-link" v-if="props.type == PAGE_TYPE.LAST">尾</a>
 
 
-          <a href="javasciprt:void(0)" :class="{'custom-link': true, 'disabled': props.disabled }" v-if="props.type == PAGE_TYPE.PRE">上</a>
-          <a href="javasciprt:void(0)" :class="{'custom-link': true, 'disabled': props.disabled }" v-if="props.type == PAGE_TYPE.NEXT">下</a>
+          <a href="javascript:void(0)" :class="{'custom-link': true, 'disabled': props.disabled }" v-if="props.type == PAGE_TYPE.PRE">上</a>
+          <a href="javascript:void(0)" :class="{'custom-link': true, 'disabled': props.disabled }" v-if="props.type == PAGE_TYPE.NEXT">下</a>
 
           <a v-if="props.type == PAGE_TYPE.OMIT">...</a>
 

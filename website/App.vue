@@ -1,10 +1,19 @@
 <template>
   <div id="app" class="components-root">
     <nav class="components-nav">
-      <router-link active-class="router-active" to="/" class="components-logo">
-        <img src="./assets/logo.jpeg" />
-      </router-link>
+      <div class="start-group">
+        <router-link active-class="router-active" to="/">
+          <i class="iconjsmod iconjsmod-shouye"></i> 介绍
+        </router-link>
 
+        <router-link active-class="router-active" to="home">
+          <i class="iconjsmod iconjsmod-jujia"></i> 安装和使用
+        </router-link>
+
+        <router-link active-class="router-active" to="home">
+          <i class="iconjsmod iconjsmod-tongzhi"></i> 更新版本
+        </router-link>
+      </div>
 
       <div class="components-group">
         <div class="components-title">弹出层组</div>
@@ -103,6 +112,24 @@
       width: 230px;
       padding: 0 10px 10px 10px;
 
+      .start-group
+        padding: 10px;
+        margin-top: 15px;
+
+        a
+          display: block;
+          padding-bottom: 10px;
+          color: #999;
+          font-size: 14px;
+          margin-bottom: 5px;
+
+          i
+            color: main-color;
+
+          &:last-child
+            margin-bottom: 10px;
+
+
       .components-logo
         display: block;
         margin-bottom: 10px;
@@ -113,7 +140,7 @@
 
     .components-router-view
       width: 0;
-      flex: 1;
+      flex: 1 1 auto;
       padding-right: 140px;
 
   .components-group

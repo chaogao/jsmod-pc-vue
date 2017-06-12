@@ -207,6 +207,6 @@
   .jsmod-dialog-solt-content
     overflow: hidden;
     position: relative;
-    flex: 1;
+    flex: 1 1 auto;
 
 </style>

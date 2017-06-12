@@ -2,9 +2,9 @@
   <div class="common-header">
     <span class="title">{{ title }}</span>
 
-    <a v-on:click="goHome" class="action-home">
-      <i class="iconjsmod iconjsmod-shouye" aria-hidden="true"></i>
-    </a>
+    <router-link active-class="router-active" to="/" class="action-home">
+      <img src="~website/assets/logo.jpeg" />
+    </router-link>
   </div>
 </template>
 
@@ -45,15 +45,13 @@ export default {
 
     .action-home
       position: absolute;
-      padding: 0 10px;
-      right: 0;
+      right: -130px;
       top: 0;
       height: 45px;
       line-height: 45px;
 
-      i
-        font-size: 18px;
-        margin-right: 5px;
+      img
+        width: 105px;
 
 
     .action-back

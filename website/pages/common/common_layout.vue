@@ -80,10 +80,6 @@ export default {
 		&.container-gray {
 			background: #EAEAEA;
 		}
-
-		&.has-footer {
-			// padding-bottom: 120px;
-		}
 	}
 
 
