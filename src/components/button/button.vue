@@ -2,14 +2,14 @@
   <a v-bind:style="[_style, customStyle]"
       @mousedown="isPress = true"
       @mouseup="isPress = false"
+      @mouseenter="isHover = true"
+      @mouseleave="() => {isHover = false; isPress = false}"
       v-bind:class="buttonClass"
       v-bind:href="href"
       @click="_onClick"
       >
 
-    <span v-if="status == 'loading'" class="jsmod-button-icon">
-      <i v-bind:class="['iconjsmod', 'iconjsmod-jiazai', 'jsmod-loading']"></i>
-    </span>
+    <mod-spin v-if="status == 'loading'" class="jsmod-button-spin"></mod-spin>
 
     <span v-if="status != 'loading'" class="jsmod-button-text"><slot></slot></span>
     <span v-else class="jsmod-button-text-loading"><slot name="loading"></slot></span>
@@ -18,6 +18,7 @@
 
 <script>
   import Vue from 'vue';
+  import { ModSpin } from '../spin';
 
   const BUTTON_STATES = [
     'default',
@@ -26,6 +27,10 @@
   ];
 
   export default {
+    components: {
+      ModSpin
+    },
+
     computed: {
       buttonClass () {
         let arr = ['jsmod-button'];
@@ -35,6 +40,7 @@
         // 都有 border
         arr.push('jsmod-button-border');
         (this.status != 'disabeld' && this.isPress) && arr.push('jsmod-button-pressing');
+        (this.status != 'disabeld' && this.isHover && !this.isPress) && arr.push('jsmod-button-hover');
 
         this.class && arr.push(this.class);
 
@@ -52,8 +58,8 @@
           obj.backgroundColor = this.backgroundColor;
         }
 
-        if (this.border) {
-          obj.borderColor = this.border;
+        if (this.borderColor) {
+          obj.borderColor = this.borderColor;
         } else if (this.customStyle && this.customStyle.backgroundColor) {
           obj.borderColor = this.customStyle.backgroundColor;
         } else {
@@ -75,7 +81,8 @@
 
     data () {
       return {
-        isPress: false
+        isPress: false,
+        isHover: false
       }
     },
 
@@ -97,7 +104,7 @@
         type: String
       },
 
-      border: {
+      borderColor: {
         type: [Boolean, String]
       },
 
@@ -138,6 +145,9 @@
     position: relative;
     overflow: hidden;
 
+    .jsmod-button-spin
+      vertical-align: text-bottom;
+
     .jsmod-button-text,
     .jsmod-button-text-loading
       position: relative;
@@ -163,6 +173,16 @@
     &.jsmod-button-border
       border: 1px solid border-color;
 
+    &.jsmod-button-hover
+      &:before
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.1);
+
     &.jsmod-button-pressing
       &:before
         content: "";
@@ -172,7 +192,6 @@
         top: 0;
         bottom: 0;
         background-color: rgba(0, 0, 0, 0.2);
-
 
 
 </style>

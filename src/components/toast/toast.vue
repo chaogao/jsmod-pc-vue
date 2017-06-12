@@ -3,7 +3,8 @@
 
     <div class="jsmod-totast">
       <div v-if="_icon" class="jsmod-toast-icon">
-        <i v-bind:class="['iconjsmod ' + _icon, this.type == 'loading' ? 'jsmod-loading': '']"></i>
+        <mod-spin :size="24" v-if="this.type == 'loading'"></mod-spin>
+        <i v-else v-bind:class="['iconjsmod ' + _icon]"></i>
       </div>
 
       <div class="jsmod-toast-content">
@@ -15,6 +16,8 @@
 
 <script>
   import { ModDialog } from '../dialog';
+  import { ModSpin } from '../spin';
+
   import ShowMixin from '../utils/show.mixin';
 
   const TOAST_TYPES = {
@@ -142,7 +145,8 @@
     },
 
     components: {
-      'mod-dialog': ModDialog
+      ModDialog,
+      ModSpin
     }
   }
 

@@ -1,5 +1,5 @@
 <template>
-  <layout title="Popover" source="popover/popover.vue" v-on:api="showApi = true">
+  <layout title="Popover" source="popover/popover.vue" :api="api">
     <div class="components-view">
       <j-code :overview="true" :source="code.overview"></j-code>
     </div>
@@ -215,10 +215,6 @@
     </div>
 
 
-    <mod-layer direction="horizontal" width="80%" v-model="showApi">
-      <j-code  :api="true" :source="api"></j-code>
-    </mod-layer>
-
   </layout>
 </template>
 
@@ -237,8 +233,7 @@
         show2: false,
         loadedData: null,
         code: code,
-        api: api,
-        showApi: false
+        api: api
       }
     },
     methods: {

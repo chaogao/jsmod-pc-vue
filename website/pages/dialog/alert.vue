@@ -1,5 +1,5 @@
 <template>
-  <layout title="Alert" source="dialog/alert.vue" v-on:api="showApi = true">
+  <layout title="Alert" source="dialog/alert.vue" :api="api">
     <div class="components-view">
       <j-code :overview="true" :source="code.overview"></j-code>
     </div>
@@ -64,10 +64,6 @@
 
       <j-code :source="code.api"></j-code>
     </div>
-
-    <mod-layer direction="horizontal" width="80%" v-model="showApi">
-      <j-code  :api="true" :source="api"></j-code>
-    </mod-layer>
   </layout>
 </template>
 
@@ -80,7 +76,6 @@
     data () {
       return {
         api: api,
-        showApi: false,
         show1: false,
         show2: false,
         show2_2: false,

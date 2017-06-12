@@ -10,12 +10,16 @@
         <span>本例源码</span>
       </a>
 
-      <a class="show-api" href="javascript:void(0)" v-on:click="() => {this.$emit('api')}">
+      <a class="show-api" href="javascript:void(0)" v-on:click="() => { this.$emit('api'); this.showApi = true;}">
         <i class="iconjsmod iconjsmod-question"></i>
         <span>显示API</span>
       </a>
 
     </div>
+
+    <mod-layer v-if="api" direction="horizontal" width="80%" v-model="showApi">
+      <j-code :api="true" :source="api"></j-code>
+    </mod-layer>
 
 		<slot v-if="isShowNotFound" name="header">
 			<common-header v-bind:title="'找不到页面'"></common-header>
@@ -39,11 +43,12 @@ export default {
 	name: 'common-layout',
 	data () {
 		return {
-			winHeight: this.containerClass == 'container-gray' ? (window.outerHeight || window.innerHeight) - 45 : 0
+			winHeight: this.containerClass == 'container-gray' ? (window.outerHeight || window.innerHeight) - 45 : 0,
+      showApi: false
 		}
 	},
 
-	props: ['title', 'hideFooter', 'containerClass', 'isShowNotFound', 'footerTab', 'hideBack', 'rightBtn', 'onRigthBtn', 'OrderTip', 'isService', 'isTitle', 'source'],
+	props: ['title', 'hideFooter', 'containerClass', 'isShowNotFound', 'footerTab', 'hideBack', 'rightBtn', 'onRigthBtn', 'OrderTip', 'isService', 'isTitle', 'source', 'api'],
 
   computed: {
     showHeader () {

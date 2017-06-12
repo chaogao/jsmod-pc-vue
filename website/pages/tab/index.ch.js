@@ -1,5 +1,9 @@
 let code = {};
 
+code.overview = `
+\`ModTab\` 简化了分栏功能的开发，默认提供简单样式。为实现最大自由度的样式定制，你可以使用[作用域插槽](https://vuefe.cn/v2/guide/components.html#作用域插槽)重写默认样式，示例三将详细说明
+`
+
 code.base = `
 \`\`\`javascript
 <template>

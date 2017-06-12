@@ -3,7 +3,8 @@
     <div v-if="showLoading && isLoading" class="jsmod-image-loading"
         v-bind:style="[{backgroundImage: 'url(' + loadingUrl + ')'}, loadingStyle]"></div>
 
-    <img ref="img" v-if="isLoading || isLoaded" v-bind:src="src" v-bind:class="imgClass" v-bind:style="imageScaleStyle" />
+    <img ref="img" v-if="isLoading || isLoaded"
+      v-bind:src="getSrc" :data-src="src" v-bind:class="imgClass" v-bind:style="imageScaleStyle" />
 
     <slot></slot>
 
@@ -24,6 +25,8 @@
 <script>
   import LOADING_GIF from '@/styles/load.gif'
   import scale from './scale'
+  import Blazy from 'blazy'
+  import uuid from '../utils/uuid'
 
   const ALLOW_SCALE_TYPES = ['cover', 'contain', 'none'];
 
@@ -31,6 +34,13 @@
     props: {
       src: {
         type: String
+      },
+
+      container: String,
+
+      lazy: {
+        type: Boolean,
+        default: false
       },
 
       scale: {
@@ -117,26 +127,54 @@
         window.addEventListener('resize', this.onResize);
       },
 
+      initLazy () {
+        let id = uuid.created('jsmod-image');
+        let self = this;
+
+        this.$refs.img.setAttribute('id', id);
+
+        setTimeout(() => {
+          this.bLazy = new Blazy({
+            container: this.container,
+            selector: `#${id}`,
+            success (ele) {
+              self.loadSuccess();
+            },
+            error (ele, msg) {
+              self.loaderror();
+            }
+          });
+        }, 100);
+      },
+
       loadImage () {
         this.isLoading = 1;
         this.isLoaded = 0;
         this.isError = 0;
 
-        this.$nextTick(() => {
-          let img = this.$refs.img;
+        if (!this.lazy) {
+          this.$nextTick(() => {
+            let img = this.$refs.img;
 
-          if (img.complete) {
-            this.loadSuccess();
-          } else {
-            img.onload = () => {
-              this.loadSuccess()
-            }
+            if (img.complete) {
+              this.loadSuccess();
+            } else {
+              img.onload = () => {
+                this.loadSuccess()
+              }
 
-            img.onerror = () => {
-              this.loaderror();
+              img.onerror = () => {
+                this.loaderror();
+              }
             }
-          }
-        });
+          });
+        }
+
+        if (this.lazy) {
+          this.$nextTick(() => {
+            this.initLazy();
+          })
+        };
       },
 
       loadSuccess () {
@@ -175,23 +213,43 @@
 
     watch: {
       offsetWidth () {
-        this.isLoaded && this.setImageScale();
+        if (this.isLoaded) {
+          this.$nextTick(() => {
+            this.setImageScale();
+          });
+        }
       },
 
       width () {
-        this.isLoaded && this.setImageScale();
+        if (this.isLoaded) {
+          this.$nextTick(() => {
+            this.setImageScale();
+          });
+        }
       },
 
       height () {
-        this.isLoaded && this.setImageScale();
+        if (this.isLoaded) {
+          this.$nextTick(() => {
+            this.setImageScale();
+          });
+        }
       },
 
       ratio () {
-        this.isLoaded && this.setImageScale();
+        if (this.isLoaded) {
+          this.$nextTick(() => {
+            this.setImageScale();
+          });
+        }
       },
 
       scale () {
-        this.isLoaded && this.setImageScale();
+        if (this.isLoaded) {
+          this.$nextTick(() => {
+            this.setImageScale();
+          });
+        }
       },
 
       src () {
@@ -204,6 +262,7 @@
         }
       }
     },
+
 
     computed: {
       imageStyle () {
@@ -221,8 +280,14 @@
           obj.height = this.height;
         }
 
-        if (this.ratio && this.offsetWidth) {
-          obj.height = (this.offsetWidth * this.ratio) + 'px';
+        if (this.ratio) {
+          if (this.offsetWidth) {
+            obj.height = (this.offsetWidth * this.ratio) + 'px';
+          }
+
+          if (!isNaN(parseInt(obj.width))) {
+            obj.height = (parseInt(obj.width) * this.ratio) + 'px';
+          }
         }
 
         return obj;
@@ -230,6 +295,14 @@
 
       imgClass () {
         return this.isLoading ? 'jsmod-image-img-loading' : 'jsmod-image-img-loaded';
+      },
+
+      getSrc () {
+        if (this.lazy) {
+          return 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+        } else {
+          return this.src;
+        }
       }
     },
 
@@ -251,9 +324,13 @@
     img
       display: block;
       transition: opacity 0.3s;
+      max-width: none;
+      max-height: none;
 
     .jsmod-image-img-loading
       opacity: 0;
+      width: 100%;
+      height: 100%;
 
     .jsmod-image-img-loaded
       opacity: 1;

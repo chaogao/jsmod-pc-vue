@@ -1,5 +1,5 @@
 <template>
-  <layout title="Dialog" source="dialog/index.vue" v-on:api="showApi = true">
+  <layout title="Dialog" source="dialog/index.vue" :api="api">
     <div class="components-view">
       <j-code :overview="true" :source="code.overview"></j-code>
     </div>
@@ -131,11 +131,6 @@
 
       <j-code :source="code.api"></j-code>
     </div>
-
-
-    <mod-layer direction="horizontal" width="80%" v-model="showApi">
-      <j-code  :api="true" :source="api"></j-code>
-    </mod-layer>
   </layout>
 </template>
 
@@ -158,7 +153,6 @@
         show5: false,
         show6: false,
         show7: false,
-        showApi: false,
         api: api,
         checkoutStatus: 'default',
         list: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'k', 'm', 'o'],

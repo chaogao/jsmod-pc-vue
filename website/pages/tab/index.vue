@@ -1,5 +1,9 @@
 <template>
-  <layout title="Tab" source="tab/index.vue" v-on:api="showApi = true">
+  <layout title="Tab" source="tab/index.vue" :api="api">
+    <div class="components-view">
+      <j-code :overview="true" :source="code.overview"></j-code>
+    </div>
+
     <div class="components-view">
       <div class="view-title">基础实例</div>
 
@@ -95,11 +99,6 @@
       <j-code  :source="code.slot"></j-code>
 
     </div>
-
-    <mod-layer direction="horizontal" width="80%" v-model="showApi">
-      <j-code  :api="true" :source="api"></j-code>
-    </mod-layer>
-
   </layout>
 </template>
 
@@ -113,10 +112,9 @@
       return {
         code: code,
         api: api,
-        showApi: false
       }
     },
-    
+
     methods: {
       onActive (e) {
         this.$jsmod.toast.show({

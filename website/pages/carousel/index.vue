@@ -1,21 +1,37 @@
 <template>
-  <layout title="Carousel" source="carousel/index.vue">
+  <layout title="Carousel" source="carousel/index.vue" :api="api">
+
     <div class="components-view">
-      <div class="view-title">基础实例</div>
+      <j-code :overview="true" :source="code.overview"></j-code>
+    </div>
 
-      <mod-carousel ref="ca" v-model="index" v-on:swiped="onSwiped" :height="160">
-        <mod-carousel-item v-for="item, key in list1" :key="key">
-          <div class="demo-carousel-inner">
-            <span>这是第{{ item }}屏</span>
-          </div>
-        </mod-carousel-item>
-      </mod-carousel>
+    <div class="components-view">
+      <div class="view-title">基础实例，两种切换效果</div>
 
-      <div class="button-groups">
-        <mod-button :inline="true" v-on:click="$refs.ca.pre()">前一个</mod-button>
-        <mod-button :inline="true" v-on:click="$refs.ca.next()">后一个</mod-button>
-        <mod-button :inline="true" v-on:click="list1.push(list1.length + 1)">添加一个</mod-button>
+      <div class="carousel-line">
+        <mod-carousel class="carousel-line-item" ref="ca" v-model="index" v-on:swiped="onSwiped" :height="160">
+          <mod-carousel-item v-for="item, key in list1" :key="key">
+            <div class="demo-carousel-inner" :style="{'backgroundColor': (item % 2 == 0 ? '#ff5a00': '#efefef'), 'color': (item % 2 == 0 ? '#fff': '#333')}">
+              <p>这是第{{ item }}屏</p>
+              <p>这是第{{ item }}屏</p>
+              <p>这是第{{ item }}屏</p>
+            </div>
+          </mod-carousel-item>
+        </mod-carousel>
+
+        <mod-carousel class="carousel-line-item" ref="ca" v-model="index" v-on:swiped="onSwiped" :fade="true" :height="160">
+          <mod-carousel-item v-for="item, key in list1" :key="key">
+            <div class="demo-carousel-inner" :style="{'backgroundColor': (item % 2 == 0 ? '#ff5a00': '#efefef'), 'color': (item % 2 == 0 ? '#fff': '#333')}">
+              <p>这是第{{ item }}屏</p>
+              <p>这是第{{ item }}屏</p>
+              <p>这是第{{ item }}屏</p>
+            </div>
+          </mod-carousel-item>
+        </mod-carousel>
       </div>
+
+      <mod-button :inline="true" v-on:click="$refs.ca.pre()">前一个</mod-button>
+      <mod-button :inline="true" v-on:click="$refs.ca.next()">后一个</mod-button>
 
       <div class="input-wrap">
         设置索引 <input v-model="index" type="number" min="0" :max="list1.length - 1"/>
@@ -24,6 +40,27 @@
       <div class="carousel-info">
         当前索引：{{ index }}
       </div>
+
+      <j-code :source="code.base"></j-code>
+    </div>
+
+    <div class="components-view">
+      <div class="view-title">头尾相接循环</div>
+
+      <mod-carousel ref="ca2" :loop="true" :height="160">
+        <mod-carousel-item v-for="item, key in list1" :key="key">
+          <div class="demo-carousel-inner">
+            <p>这是第{{ item }}屏</p>
+            <p>这是第{{ item }}屏</p>
+            <p>这是第{{ item }}屏</p>
+          </div>
+        </mod-carousel-item>
+      </mod-carousel>
+
+      <mod-button :inline="true" v-on:click="$refs.ca2.pre()">前一个</mod-button>
+      <mod-button :inline="true" v-on:click="$refs.ca2.next()">后一个</mod-button>
+
+      <j-code :source="code.loop"></j-code>
     </div>
 
     <div class="components-view">
@@ -32,25 +69,16 @@
       <mod-carousel :interval="3000" :height="160">
         <mod-carousel-item v-for="item, key in list1" :key="key">
           <div class="demo-carousel-inner">
-            <span>这是第{{ item }}屏</span>
+            <p>这是第{{ item }}屏</p>
+            <p>这是第{{ item }}屏</p>
+            <p>这是第{{ item }}屏</p>
           </div>
         </mod-carousel-item>
       </mod-carousel>
+
+      <j-code :source="code.auto"></j-code>
+
     </div>
-
-
-    <div class="components-view">
-      <div class="view-title">头尾相接循环</div>
-
-      <mod-carousel :loop="true" :height="160">
-        <mod-carousel-item v-for="item, key in list1" :key="key">
-          <div class="demo-carousel-inner">
-            <span>这是第{{ item }}屏</span>
-          </div>
-        </mod-carousel-item>
-      </mod-carousel>
-    </div>
-
 
     <div class="components-view">
       <div class="view-title">垂直方向轮播</div>
@@ -67,12 +95,41 @@
           </div>
         </mod-carousel-item>
       </mod-carousel>
+
+      <j-code :source="code.vertical"></j-code>
+    </div>
+
+    <div class="components-view">
+      <div class="view-title">加入自定义元素</div>
+
+      <mod-carousel ref="ca3" :loop="true" :height="200" >
+        <mod-carousel-item v-for="item, key in list1" :key="key">
+          <div class="demo-carousel-inner">
+            <p>这是第{{ item }}屏</p>
+            <p>这是第{{ item }}屏</p>
+            <p>这是第{{ item }}屏</p>
+          </div>
+        </mod-carousel-item>
+
+        <div v-on:click="$refs.ca3.pre()" class="control-left">
+          <i  class="iconjsmod iconjsmod-xiangzuo1"></i>
+        </div>
+
+        <div  v-on:click="$refs.ca3.next()" class="control-right">
+          <i  class="iconjsmod iconjsmod-xiangyou1"></i>
+        </div>
+      </mod-carousel>
+
+      <j-code :source="code.custom"></j-code>
     </div>
   </layout>
 </template>
 
 <script>
   import Layout from '../common/common_layout';
+
+  import code from './index.ch';
+  import api from './index.ch.api.md'
 
   export default {
     components: {
@@ -81,6 +138,8 @@
 
     data () {
       return {
+        api: api,
+        code: code,
         list1: [1, 2, 3, 4],
         list2: [
           {
@@ -110,28 +169,63 @@
 
 <style lang="stylus">
   @import "~website/assets/mixin"
+  .carousel-line
+    display: flex;
+    margin-bottom: 10px;
 
-  .button-groups
-    margin: 10px 0;
+    .carousel-line-item
+      flex: 1;
+      width: 0;
+      border-right: 1px solid main-color;
+
+      &:last-child
+        border-right: none;
 
   .demo-carousel-inner
     background: #efefef;
     color: #ff5a00;
     width: 100%;
     height: 100%;
+    padding-top: 30px;
+    text-align: center;
 
-    span
+
+  .control-left
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    min-width: 50px;
+    width: 10%;
+
+  .control-right
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    min-width: 50px;
+    width: 10%;
+
+  .control-left,
+  .control-right
+    cursor: pointer;
+    transition: background 0.3s;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.2);
+
+    &:hover
+      background: rgba(0, 0, 0, 0.6);
+
+      i
+        color: #efefef;
+
+    i
+      color: #fff;
+      font-size: 16px;
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
 
-  .demo-carousel-comment
-    .demo-title
-      color: #333;
-
-    .demo-content
-      color: #999;
-      font-size: 12px;
 
 </style>

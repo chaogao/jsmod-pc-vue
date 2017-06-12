@@ -1,5 +1,5 @@
 <template>
-  <layout title="Toast" source="dialog/toast.vue">
+  <layout title="Toast" source="dialog/toast.vue" :api="api">
     <div class="components-view">
       <j-code :overview="true" :source="code.overview"></j-code>
     </div>
@@ -38,10 +38,12 @@
 <script>
   import Layout from '../common/common_layout';
   import code from './toast.ch';
+  import api from './toast.ch.api.md'
 
   export default {
     data () {
       return {
+        api: api,
         code: code,
         show1: false,
         show2: false,

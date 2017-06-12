@@ -21,7 +21,7 @@
 
       title: {
         type: [Boolean, String],
-        default: '示例代码'
+        default: '示例说明（代码）'
       },
 
       api: {
@@ -61,6 +61,8 @@
   @import "~website/assets/mixin"
 
   .code-wrap
+    margin-top: 10px;
+
     &.code-wrap-api
       padding: 30px;
       padding-top: 10px;
@@ -70,6 +72,7 @@
       padding: 10px 15px;
       border: 1px solid main-color;
       border-radius: 5px;
+      margin-top: 0;
 
     .code-title
       font-size: 13px;

@@ -1,34 +1,49 @@
 <template>
-  <layout title="Button" source="button/index.vue">
-    <div class="button-wrap">
-      <mod-button v-on:click="onClick(1)" :customStyle="customStyle">按钮</mod-button>
-      <mod-button class="custom-button" :customStyle="customStyle">自定义类名</mod-button>
+  <layout title="Button" source="button/index.vue"  :api="api">
+    <div class="components-view">
+      <j-code :overview="true" :source="code.overview"></j-code>
+    </div>
 
-      <mod-button v-on:click="getApi()" :status="btnStatus" :customStyle="customStyle" :border="true">
-        获取API
+    <div class="components-view">
+      <div class="view-title">基础示例：按钮的两种展示，三种状态</div>
+
+      <mod-button class="custom-button">默认（block）</mod-button>
+
+      <mod-button :inline="true" v-on:click="onClick">默认</mod-button>
+      <mod-button :inline="true" status="loading" >
         <span slot="loading">加载中</span>
       </mod-button>
+      <mod-button :inline="true" status="disabeld" >禁止使用</mod-button>
 
-      <mod-button v-on:click="onClick(2)" border="#ff5a00" color="#ff5a00" background-color="#fff" :customStyle="customStyle">自定义颜色按钮</mod-button>
-
-      <mod-button :href="'http://baidu.com'" :customStyle="customStyle">
-        跳转到百度
-      </mod-button>
-
-      <mod-button :status="'disabeld'" :customStyle="customStyle">禁止</mod-button>
-
-      <div class="button-inline">
-        <mod-button :inline="true" :customStyle="customStyle">行内按钮1</mod-button>
-        <mod-button :inline="true" :border="true" color="#ff5a00" background-color="#fff"  :customStyle="customStyle">行内按钮2</mod-button>
-        <mod-button :inline="true" :customStyle="{backgroundColor: '#f50', marginBottom: '10px'}">行内按钮3</mod-button>
-      </div>
-
+      <j-code  :source="code.base"></j-code>
     </div>
+
+    <div class="components-view">
+      <div class="view-title">使用参数配置样式</div>
+
+      <mod-button :backgroundColor="'#fff'" :borderColor="'#f55a00'" :color="'#f55a00'" :inline="true">显示border</mod-button>
+      <mod-button :backgroundColor="'#f55a00'"  :color="'#ff'" :inline="true">隐藏border</mod-button>
+      <mod-button :backgroundColor="'#f55a00'"  :color="'#ff'" :inline="true" status="disabeld">disabeld配置颜色不起作用</mod-button>
+
+      <j-code  :source="code.base"></j-code>
+    </div>
+
+
+    <div class="components-view">
+      <div class="view-title">使用样式对象</div>
+
+      <mod-button :customStyle="customStyle" :inline="true">自由配置</mod-button>
+
+      <j-code  :source="code.style"></j-code>
+    </div>
+
   </layout>
 </template>
 
 <script>
   import Layout from '../common/common_layout';
+  import code from './index.ch';
+  import api from './index.ch.api.md'
 
   export default {
     components: {
@@ -37,10 +52,16 @@
 
     data () {
       return {
-        btnStatus: 'default',
-
+        code: code,
+        api: api,
         customStyle: {
-          marginBottom: '10px'
+          borderRadius: 0,
+          width: '100px',
+          height: '50px',
+          lineHeight: '50px',
+          padding: 0,
+          backgroundColor: '#fa0',
+          color: '#fff'
         }
       }
     },
@@ -48,22 +69,8 @@
     methods: {
       onClick (index) {
         this.$jsmod.toast.show({
-          content: '按钮' + index,
+          content: '点我干嘛',
         });
-      },
-
-      getApi () {
-        console.log('getapi');
-        this.btnStatus = 'loading';
-
-        let loading = this.$jsmod.toast.show({
-          type: 'loading'
-        });
-
-        setTimeout(() => {
-          loading.hide();
-          this.btnStatus = 'default';
-        }, 1000);
       }
     }
   }
@@ -71,7 +78,6 @@
 
 <style lang="stylus">
   .custom-button
-    border-radius: 0!important;
-    background: #ff5a00!important;
+    margin-bottom: 10px;
 
 </style>

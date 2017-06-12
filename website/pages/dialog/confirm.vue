@@ -1,5 +1,5 @@
 <template>
-  <layout title="Confirm" source="dialog/confirm.vue"  v-on:api="showApi = true">
+  <layout title="Confirm" source="dialog/confirm.vue"  :api="api">
     <div class="components-view">
       <j-code :overview="true" :source="code.overview"></j-code>
     </div>
@@ -64,9 +64,6 @@
       <j-code :source="code.api"></j-code>
     </div>
 
-    <mod-layer direction="horizontal" width="80%" v-model="showApi">
-      <j-code  :api="true" :source="api"></j-code>
-    </mod-layer>
   </layout>
 </template>
 
@@ -83,7 +80,6 @@
         show2: false,
         show3: false,
         show4: false,
-        showApi: false,
         code: code,
         api: api,
 

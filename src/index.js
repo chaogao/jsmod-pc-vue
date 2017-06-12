@@ -29,6 +29,8 @@ import './styles/utils.styl';
 import './styles/transition.styl';
 import './styles/iconfont/iconfont.css'
 
+import pkg from '../package.json'
+
 const Components = {
   ModDialog,
   ModAlert,
@@ -54,6 +56,7 @@ const install = (Vue, options) => {
   Object.keys(Components).forEach(key => Vue.component(key, Components[key]));
 
   Vue.prototype.$jsmod = {
+    'version': pkg.version,
     'dialog': Dialog,
     'alert': Alert,
     'confirm': Confirm,
