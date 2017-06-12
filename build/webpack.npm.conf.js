@@ -52,7 +52,7 @@ module.exports = {
 
   output: {
     path: config.npm.assetsRoot,
-    library: 'jsmod-mobile',
+    library: 'jsmod-pc',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },

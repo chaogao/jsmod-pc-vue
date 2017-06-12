@@ -19,3 +19,7 @@ import JSMOD from 'jsmod-pc-vue'
 
 Vue.use(JSMOD)
 ```
+
+### 2. 使用 `script` 安装
+
+1. 进入 [https://github.com/chaogao/jsmod-pc-vue/tree/master/lib](https://github.com/chaogao/jsmod-pc-vue/tree/master/lib) 下载 `jsmod-pc.js` 并引入页面
