@@ -37,7 +37,7 @@
 
 #### 1. 使用 `webpack` 开发
 
-```
+```javascript
 npm install jsmod-pc-vue --save
 
 import Vue from 'vue'
