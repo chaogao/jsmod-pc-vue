@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '../pages'
+import Log from '../pages/log'
 import Dialog from '../pages/dialog'
 import Alert from '../pages/dialog/alert'
 import Confirm from '../pages/dialog/confirm'
@@ -29,8 +30,13 @@ let router = new Router({
   routes: [
     {
       path: '/',
-      name: 'Index',
+      name: 'index',
       component: Index
+    },
+    {
+      path: '/log',
+      name: 'log',
+      component: Log
     },
     {
       path: '/dialog',

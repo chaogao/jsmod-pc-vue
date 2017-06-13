@@ -6,12 +6,14 @@
 
 ### 安装和使用
 
-#### 1. 使用 `webpack`
+#### 1. 使用 `webpack` 开发
 
 ```
 npm install jsmod-pc-vue --save
 
 ```
+
+
 
 ```javascript
 import Vue from 'vue'
@@ -20,6 +22,13 @@ import JSMOD from 'jsmod-pc-vue'
 Vue.use(JSMOD)
 ```
 
-### 2. 使用 `script` 安装
+#### 2. 使用 `script` 安装`（不推荐）`
 
-1. 进入 [https://github.com/chaogao/jsmod-pc-vue/tree/master/lib](https://github.com/chaogao/jsmod-pc-vue/tree/master/lib) 下载 `jsmod-pc.js` 并引入页面
+进入 [jsmod-pc-vue](https://github.com/chaogao/jsmod-pc-vue) 下载 `lib/jsmod.pc.js` 并引入页面即可使用
+
+
+### 当前版本
+
+<a href="https://github.com/chaogao/jsmod-pc-vue" target="_blank">
+  <img src="https://img.shields.io/npm/v/jsmod-pc-vue.svg?style=flat-square">
+</a>

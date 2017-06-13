@@ -2,15 +2,11 @@
   <div id="app" class="components-root">
     <nav class="components-nav">
       <div class="start-group">
-        <router-link active-class="router-active" to="/">
-          <i class="iconjsmod iconjsmod-shouye"></i> 介绍
+        <router-link active-class="router-active" :to="{name: 'index'}" exact>
+          <i class="iconjsmod iconjsmod-shouye"></i> 介绍和使用
         </router-link>
 
-        <router-link active-class="router-active" to="home">
-          <i class="iconjsmod iconjsmod-jujia"></i> 安装和使用
-        </router-link>
-
-        <router-link active-class="router-active" to="home">
+        <router-link active-class="router-active" :to="{name: 'log'}">
           <i class="iconjsmod iconjsmod-tongzhi"></i> 更新版本
         </router-link>
       </div>
@@ -122,6 +118,9 @@
           color: #999;
           font-size: 14px;
           margin-bottom: 5px;
+
+          &.router-active
+            color: main-color;
 
           i
             color: main-color;

@@ -1,9 +1,10 @@
 {
   "name": "jsmod-pc-vue",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "jsmod components for vue",
   "author": "gaochao04@gmail.com",
   "main": "/lib/jsmod.pc.js",
+  "license": "MIT",
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
