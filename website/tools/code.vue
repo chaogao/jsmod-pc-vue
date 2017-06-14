@@ -1,7 +1,9 @@
 <template>
   <div ref="code" :class="{'code-wrap': true, 'code-wrap-api': api, 'code-wrap-overview': overview}">
     <div v-if="title && !api && !overview" class="code-title"><i class="iconjsmod iconjsmod-jujia"></i>{{ title }}</div>
-    <vue-markdown :source="source"></vue-markdown>
+
+    <vue-markdown v-if="langSources" :source="langSources[this.$i18n.locale]"></vue-markdown>
+    <vue-markdown v-else :source="source"></vue-markdown>
   </div>
 </template>
 
@@ -18,6 +20,8 @@
       source: {
         type: String
       },
+
+      langSources: Object,
 
       title: {
         type: [Boolean, String],

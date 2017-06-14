@@ -129,7 +129,7 @@ export default {
     .show-api {
       position: fixed;
       right: 10px;
-      top: 100px;
+      top: 80px;
       background: #f7f7f7;
       z-index: 99;
     }

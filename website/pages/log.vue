@@ -1,7 +1,7 @@
 <template>
-  <layout title="Update Logs">
+  <layout title="Change Log">
     <div class="components-view">
-      <j-code :title="false"  :source="log"></j-code>
+      <j-code :title="false"  :langSources="log"></j-code>
     </div>
 
   </layout>
@@ -9,7 +9,8 @@
 
 <script>
   import Layout from './common/common_layout'
-  import log from './update/log.md'
+  import logZh from './update/log.zh.md'
+  import logEn from './update/log.en.md'
 
   export default {
     components: {
@@ -17,7 +18,10 @@
     },
     data () {
       return {
-        log: log
+        log: {
+          en: logEn,
+          zh: logZh
+        }
       }
     }
   }

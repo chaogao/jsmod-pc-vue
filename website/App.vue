@@ -1,18 +1,37 @@
+<i18n>
+  {
+    "en": {
+      "introduce": "Introduce && Usage",
+      "log": "Change Log",
+      "popup": "Pop-up Layer Group",
+      "opeartion": "Operation Group",
+      "view": "Views Group"
+    },
+    "zh": {
+      "introduce": "介绍和使用",
+      "log": "版本更新",
+      "popup": "弹出层组",
+      "opeartion": "操作控件组",
+      "view": "展示控件组"
+    }
+  }
+</i18n>
+
 <template>
   <div id="app" class="components-root">
     <nav class="components-nav">
       <div class="start-group">
         <router-link active-class="router-active" :to="{name: 'index'}" exact>
-          <i class="iconjsmod iconjsmod-shouye"></i> 介绍和使用
+          <i class="iconjsmod iconjsmod-shouye"></i> {{ $t('introduce') }}
         </router-link>
 
         <router-link active-class="router-active" :to="{name: 'log'}">
-          <i class="iconjsmod iconjsmod-tongzhi"></i> 更新版本
+          <i class="iconjsmod iconjsmod-tongzhi"></i> {{ $t('log') }}
         </router-link>
       </div>
 
       <div class="components-group">
-        <div class="components-title">弹出层组</div>
+        <div class="components-title">{{ $t('popup') }}</div>
 
         <div class="components-links">
           <router-link active-class="router-active" to="popover">
@@ -44,7 +63,7 @@
       </div>
 
       <div class="components-group">
-        <div class="components-title">操作控件组</div>
+        <div class="components-title">{{ $t('opeartion') }}</div>
 
         <div class="components-links">
           <router-link active-class="router-active" to="button">
@@ -66,7 +85,7 @@
       </div>
 
       <div class="components-group">
-        <div class="components-title">展示控件组</div>
+        <div class="components-title">{{ $t('view') }}</div>
 
         <div class="components-links">
           <router-link active-class="router-active" to="image">
