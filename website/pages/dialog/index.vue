@@ -1,11 +1,40 @@
+<i18n>
+  {
+    "en": {
+      "eg_base": "Basic Usage",
+      "eg_base_auto": "Auto Width and height",
+      "eg_base_fix": "Static Width and height",
+      "eg_base_percentage": "Percentage Width and height",
+      "eg_offset": "Offset Vertical",
+      "eg_update": "Auto Update Position",
+      "eg_mask": "Disable Mask",
+      "eg_mutilayer": "Use Header && Footer Slot",
+      "eg_opacity": "Transparent Background",
+      "eg_api": "Use API"
+    },
+    "zh": {
+      "eg_base": "基础示例",
+      "eg_base_auto": "自动宽高",
+      "eg_base_fix": "固定宽高",
+      "eg_base_percentage": "宽高百分比",
+      "eg_offset": "垂直方向偏移",
+      "eg_update": "自动更新位置",
+      "eg_mask": "不显示遮罩层",
+      "eg_mutilayer": "使用 Header && Footer Slot",
+      "eg_opacity": "透明背景",
+      "eg_api": "使用 API 调用"
+    }
+  }
+</i18n>
+
 <template>
-  <layout title="Dialog" source="dialog/index.vue" :api="api">
+  <layout title="Dialog" source="dialog/index.vue" :apiLang="api">
     <div class="components-view">
-      <j-code :overview="true" :source="code.overview"></j-code>
+      <j-code :overview="true" :langSources="code.overview"></j-code>
     </div>
 
     <div class="components-view">
-      <div class="view-title">基础实例</div>
+      <div class="view-title">{{ $t('eg_base') }}</div>
 
       <mod-dialog v-model="show1">
         <div class="base-dialog">
@@ -25,15 +54,15 @@
         </div>
       </mod-dialog>
 
-      <mod-button :inline="true" v-on:click="show1 = !show1" >显示（自动宽高）</mod-button>
-      <mod-button :inline="true" v-on:click="show1_1 = !show1_1" >显示（固定值）</mod-button>
-      <mod-button :inline="true" v-on:click="show1_2 = !show1_2" >显示（固定百分比）</mod-button>
+      <mod-button :inline="true" v-on:click="show1 = !show1" >{{ $t('eg_base_auto') }}</mod-button>
+      <mod-button :inline="true" v-on:click="show1_1 = !show1_1" >{{ $t('eg_base_fix') }}</mod-button>
+      <mod-button :inline="true" v-on:click="show1_2 = !show1_2" >{{ $t('eg_base_percentage') }}</mod-button>
 
       <j-code :source="code.base"></j-code>
     </div>
 
     <div class="components-view">
-      <div class="view-title">向上方偏移</div>
+      <div class="view-title">{{ $t('eg_offset') }}</div>
 
       <mod-dialog v-model="show2" :offsetTop="-200">
         <div class="base-dialog">
@@ -41,47 +70,47 @@
         </div>
       </mod-dialog>
 
-      <mod-button :inline="true" v-on:click="show2 = !show2" >显示</mod-button>
+      <mod-button :inline="true" v-on:click="show2 = !show2" >{{ $t('cShow') }}</mod-button>
 
       <j-code :source="code.offset"></j-code>
     </div>
 
 
     <div class="components-view">
-      <div class="view-title">自动更新位置</div>
+      <div class="view-title">{{ $t('eg_update') }}</div>
 
       <mod-dialog v-model="show3" >
         <div class="base-scroll">
           <div v-for="item in list2" clas="base-dialog-item">{{ item }}</div>
 
-          <mod-button v-on:click="list2.push('一条数据')" >添加</mod-button>
+          <mod-button v-on:click="list2.push('一条数据')" >Add Item</mod-button>
         </div>
       </mod-dialog>
 
-      <mod-button :inline="true" v-on:click="show3 = !show3" >显示</mod-button>
+      <mod-button :inline="true" v-on:click="show3 = !show3" >{{ $t('cShow') }}</mod-button>
 
       <j-code :source="code.update"></j-code>
     </div>
 
 
     <div class="components-view">
-      <div class="view-title">不显示遮罩层</div>
+      <div class="view-title">{{ $t('eg_mask') }}</div>
 
       <mod-dialog v-model="show4" :useMask="false">
         <div class="base-dialog">
           hello jsmod
 
-          <mod-button v-on:click="show4 = false" >关闭</mod-button>
+          <mod-button v-on:click="show4 = false" >close</mod-button>
         </div>
       </mod-dialog>
 
-      <mod-button :inline="true" v-on:click="show4 = !show4" >显示</mod-button>
+      <mod-button :inline="true" v-on:click="show4 = !show4" >{{ $t('cShow') }}</mod-button>
 
       <j-code :source="code.mask"></j-code>
     </div>
 
     <div class="components-view">
-      <div class="view-title">复合弹层</div>
+      <div class="view-title">{{ $t('eg_mutilayer') }}</div>
 
       <mod-dialog :height="500" width="40%" v-model="show6" >
         <div slot="header" class="base-header">
@@ -106,30 +135,30 @@
         </div>
       </mod-dialog>
 
-      <mod-button :inline="true" v-on:click="show6 = !show6" >显示</mod-button>
+      <mod-button :inline="true" v-on:click="show6 = !show6" >{{ $t('cShow') }}</mod-button>
 
-      <j-code :source="code.complex"></j-code>
+      <j-code :langSources="code.complex"></j-code>
     </div>
 
     <div class="components-view">
-      <div class="view-title">透明背景</div>
+      <div class="view-title">{{ $t('eg_opacity') }}</div>
 
       <mod-dialog  v-model="show7" :backgroundColor="false" >
         <mod-image :width="400" :ratio="1" src="https://oajua4pqj.qnssl.com/o_1bhto5e7k15lq1j3513ufjtv1gfr7.png"></mod-image>
       </mod-dialog>
 
-      <mod-button :inline="true" v-on:click="show7 = !show7" >显示</mod-button>
+      <mod-button :inline="true" v-on:click="show7 = !show7" >{{ $t('cShow') }}</mod-button>
 
       <j-code :source="code.opacity"></j-code>
     </div>
 
 
     <div class="components-view">
-      <div class="view-title">API 调用</div>
+      <div class="view-title">{{ $t('eg_api') }}</div>
 
-      <mod-button v-on:click="showDialog" :inline="true">API调用</mod-button>
+      <mod-button v-on:click="showDialog" :inline="true">{{ $t('cShow') }}</mod-button>
 
-      <j-code :source="code.api"></j-code>
+      <j-code :sourc="code.api"></j-code>
     </div>
   </layout>
 </template>
@@ -137,7 +166,8 @@
 <script>
   import Layout from '../common/common_layout';
   import code from './index.ch';
-  import api from './index.ch.api.md'
+  import apiZh from './index.zh.api.md'
+  import apiEn from './index.en.api.md'
 
 
   export default {
@@ -153,7 +183,10 @@
         show5: false,
         show6: false,
         show7: false,
-        api: api,
+        api: {
+          en: apiEn,
+          zh: apiZh
+        },
         checkoutStatus: 'default',
         list: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'k', 'm', 'o'],
         list2: ['一条数据'],

@@ -1,3 +1,17 @@
+<i18n>
+  {
+    "en": {
+      "source": "Link to source code",
+      "api": "Show API"
+    },
+    "zh": {
+      "source": "显示源码",
+      "api": "显示API"
+    }
+  }
+</i18n>
+
+
 <template>
 	<div id="common-layout">
 		<common-header v-bind:onRigthBtn="onRigthBtn" v-if="showHeader" v-bind:hideBack="hideBack" v-bind:title="title" v-bind:OrderTip="OrderTip" v-bind:isService="isService" v-bind:isTitle="isTitle">
@@ -5,20 +19,23 @@
 		</common-header>
 
     <div v-if="showSource" class="common-footer-source">
-      <a :href="'https://github.com/chaogao/jsmod-pc-vue/tree/master/website/pages/' + source ">
+      <a :href="'https://github.com/chaogao/jsmod-pc-vue/tree/master/website/pages/' + source " target="_blank">
         <i class="iconjsmod iconjsmod-sousuo"></i>
-        <span>本例源码</span>
+        <span>{{ $t('source') }}</span>
       </a>
 
       <a class="show-api" href="javascript:void(0)" v-on:click="() => { this.$emit('api'); this.showApi = true;}">
         <i class="iconjsmod iconjsmod-question"></i>
-        <span>显示API</span>
+        <span>{{ $t('api') }}</span>
       </a>
 
     </div>
 
     <mod-layer v-if="api" direction="horizontal" width="80%" v-model="showApi">
       <j-code :api="true" :source="api"></j-code>
+    </mod-layer>
+    <mod-layer v-if="apiLang" direction="horizontal" width="80%" v-model="showApi">
+      <j-code :api="true" :langSources="apiLang"></j-code>
     </mod-layer>
 
 		<slot v-if="isShowNotFound" name="header">
@@ -48,7 +65,7 @@ export default {
 		}
 	},
 
-	props: ['title', 'hideFooter', 'containerClass', 'isShowNotFound', 'footerTab', 'hideBack', 'rightBtn', 'onRigthBtn', 'OrderTip', 'isService', 'isTitle', 'source', 'api'],
+	props: ['title', 'hideFooter', 'containerClass', 'isShowNotFound', 'footerTab', 'hideBack', 'rightBtn', 'onRigthBtn', 'OrderTip', 'isService', 'isTitle', 'source', 'api', 'apiLang'],
 
   computed: {
     showHeader () {

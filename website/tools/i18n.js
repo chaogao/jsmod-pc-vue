@@ -7,11 +7,13 @@ const i18n = new VueI18n({
   locale: 'en',
   messages: {
     en: {
-      'cShow': 'Click'
+      'cShow': 'Click Me',
+      'hShow': 'Hover Me'
     },
 
     zh: {
-      'cShow': '点击显示'
+      'cShow': '点击显示',
+      'hShow': '划过显示',
     }
   }
 });

@@ -1,12 +1,25 @@
 let code = {};
 
-code.overview = `
+code.overview = {};
+
+
+code.overview.zh = `
 \`ModDialog\`为弹出层的基础组件，\`ModAlert\` \`ModConfirm\` \`ModToast\` 都是其子组件，在实现特定弹出层组件需求时建议直接扩展本组件。
 
 * 使用 \`v-model\` 绑定显示（隐藏）状态
 * 无需设置宽高（如果固定建议还是设置），可自动计算位置
 * 使用 \`heade\` \`footer\` slot 可简单实现首尾三段布局
 `;
+
+code.overview.en = `
+\`ModDialog \` is the base component of Modal, \`ModAlert \` \`ModConfirm \` \`ModToast \` is its subcomponent,
+it is recommended to use this component directly when creat a custom style modal.
+
+* use \`v-model\` directive bingding to display status
+* don't need to define the width and height, it can automatically calculate(update) position
+* use \`heade\` \`footer\` slot can fix \`default slot\` in center
+`;
+
 
 code.base = `
 \`\`\`javascript
@@ -91,12 +104,51 @@ code.mask = `
 </template>
 `;
 
-code.complex = `
+code.complex = {};
+
+code.complex.zh = `
 使用 \`header\` \`footer\` slot 可以将弹层拆分为三段布局，设置的高度为整体高度，例如：
 
 1. 整体设置 500px 高度
 2. \`header\` 占用 50px \`footer\` 占用 150px
 3. 内容区域为 350px 高的可滚动容器
+
+\`\`\`javascript
+
+<template>
+  <mod-dialog :height="500" width="40%" v-model="show6" >
+    <div slot="header" class="base-header">
+      商品描述
+    </div>
+
+    <div class="base-scroll">
+      <div class="product-title">新款单排扣牛仔半身裙弹力牛仔短裙</div>
+
+      <div class="product-imgs">
+        <img src="https://oajua4pqj.qnssl.com/o_1bep544eefrinqris5qdu113qh.jpg">
+        <img src="https://oajua4pqj.qnssl.com/o_1bep529r267e1vnscrja5ouclc.jpg">
+
+      </div>
+    </div>
+
+    <div slot="footer" class="base-footer">
+      <mod-button  :status="checkoutStatus" v-on:click="checkout">
+        结算
+        <span slot="loading">结算中</span>
+      </mod-button>
+    </div>
+  </mod-dialog>
+
+  <mod-button :inline="true" v-on:click="show6 = !show6" >显示</mod-button>
+</template>
+`;
+
+code.complex.en = `
+use \`heade\` \`footer\` slot can fix \`default slot\` in center, eg:
+
+1. modal height is 500px
+2. \`header\` height is 50px,  \`footer\` height is 150px
+3. content is a scrollable container with 350px
 
 \`\`\`javascript
 

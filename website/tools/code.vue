@@ -1,6 +1,17 @@
+<i18n>
+  {
+    "en": {
+      "title": "Demo Code && Explanation"
+    },
+    "zh": {
+      "title": "示例说明（代码）"
+    }
+  }
+</i18n>
+
 <template>
   <div ref="code" :class="{'code-wrap': true, 'code-wrap-api': api, 'code-wrap-overview': overview}">
-    <div v-if="title && !api && !overview" class="code-title"><i class="iconjsmod iconjsmod-jujia"></i>{{ title }}</div>
+    <div v-if="title && !api && !overview" class="code-title"><i class="iconjsmod iconjsmod-jujia"></i>{{ $t('title') }}</div>
 
     <vue-markdown v-if="langSources" :source="langSources[this.$i18n.locale]"></vue-markdown>
     <vue-markdown v-else :source="source"></vue-markdown>
@@ -69,7 +80,7 @@
 
     &.code-wrap-api
       padding: 30px;
-      padding-top: 10px;
+      padding-top: 0;
 
     &.code-wrap-overview
       background: #f9f9f9;

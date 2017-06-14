@@ -1,16 +1,51 @@
+<i18n>
+  {
+    "en": {
+      "eg_base": "Basic Usage",
+      "eg_targetType": "Popover Position",
+      "eg_targetType_result": "Current TargetType is:",
+      "eg_arrow": "Arrow Config",
+      "eg_arrow_no": "No Arrow",
+      "eg_arrow_custom": "Custom Arrow Style",
+      "eg_delay_show": "Mouseenter 1s Show",
+      "eg_delay_hide": "Mouseout 1s Hide",
+      "eg_event": "Display Events",
+      "eg_offset": "Set Offset",
+      "eg_load": "Auto Update Position",
+      "eg_manual": "Manual control display",
+      "eg_background": "Use custom background style"
+    },
+    "zh": {
+      "eg_base": "基础示例",
+      "eg_targetType": "设置 Popover 的位置",
+      "eg_targetType_result": "当前 TargetType:",
+      "eg_arrow": "角标配置",
+      "eg_arrow_no": "不使用角标",
+      "eg_arrow_custom": "自定义角标",
+      "eg_delay_show": "移入1s后显示",
+      "eg_delay_hide": "移出1s后隐藏",
+      "eg_event": "显示|隐藏事件",
+      "eg_offset": "设置偏移",
+      "eg_load": "内容改变自动更新位置",
+      "eg_manual": "手动控制显示状态",
+      "eg_background": "使用自定义背景"
+    }
+  }
+</i18n>
+
 <template>
-  <layout title="Popover" source="popover/popover.vue" :api="api">
+  <layout title="Popover" source="popover/popover.vue" :apiLang="api">
     <div class="components-view">
-      <j-code :overview="true" :source="code.overview"></j-code>
+      <j-code :overview="true" :langSources="code.overview"></j-code>
     </div>
 
 
     <div class="components-view">
-      <div class="view-title">基础实例</div>
+      <div class="view-title">{{ $t('eg_base') }}</div>
 
       <div class="view-demo" id="demo-base">
         <mod-popover >
-          <mod-button :inline="true" >鼠标点击</mod-button>
+          <mod-button :inline="true" >{{ $t('cShow') }}</mod-button>
 
           <div class="my-content" slot="content">
             hello jsmod
@@ -18,7 +53,7 @@
         </mod-popover>
 
         <mod-popover trigger="hover" target-type="bottom">
-          <mod-button :inline="true">鼠标划过</mod-button>
+          <mod-button :inline="true">{{ $t('hShow') }}</mod-button>
 
           <div class="my-content" slot="content">
             hello jsmod
@@ -32,9 +67,9 @@
 
 
     <div class="components-view">
-      <div class="view-title">targetType 参数说明</div>
+      <div class="view-title">{{ $t('eg_targetType') }}</div>
 
-      <j-code :title="false" :source="code.position"></j-code>
+      <j-code :title="false" :langSources="code.position"></j-code>
 
       <div class="select-wrap">
         <div class="target-wrap">
@@ -74,7 +109,7 @@
 
         </div>
 
-        <div class="target-result">当前 TargetType 为：{{ targetType }}</div>
+        <div class="target-result"><b> {{ $t('eg_targetType_result') }} </b>{{ targetType }}</div>
 
         <mod-popover :targetType="targetType" trigger="manual" :value="true">
           <div class="custom-target"></div>
@@ -88,10 +123,10 @@
     </div>
 
     <div class="components-view">
-      <div class="view-title">角标相关设置</div>
+      <div class="view-title">{{ $t('eg_arrow') }}</div>
 
       <mod-popover trigger="hover" :arrow="false">
-        <mod-button :inline="true" >不使用角标</mod-button>
+        <mod-button :inline="true" >{{ $t('eg_arrow_no') }}</mod-button>
 
         <div class="my-content" slot="content">
           hello jsmod
@@ -99,7 +134,7 @@
       </mod-popover>
 
       <mod-popover trigger="hover" target-type="top" :arrowSize="30" arrow-color="#4ad1c6" arrow-border-color="#e41b23">
-        <mod-button :inline="true">自定义角标样式</mod-button>
+        <mod-button :inline="true">{{ $t('eg_arrow_custom') }}</mod-button>
 
         <div class="my-content-color" slot="content">
           hello jsmod
@@ -115,7 +150,7 @@
       <div class="view-title">Hover Dealy</div>
 
       <mod-popover trigger="hover" :showDelay="1000">
-        <mod-button :inline="true" >移入1s后显示</mod-button>
+        <mod-button :inline="true" >{{ $t('eg_delay_show') }}</mod-button>
 
         <div class="my-content" slot="content">
           hello jsmod
@@ -123,7 +158,7 @@
       </mod-popover>
 
       <mod-popover trigger="hover" :hideDelay="1000">
-        <mod-button :inline="true" >移出1s后隐藏</mod-button>
+        <mod-button :inline="true" >{{ $t('eg_delay_hide') }}</mod-button>
 
         <div class="my-content" slot="content">
           hello jsmod
@@ -134,7 +169,7 @@
     </div>
 
     <div class="components-view">
-      <div class="view-title">显示|隐藏事件</div>
+      <div class="view-title">{{ $t('eg_event') }}</div>
 
       <mod-popover target-type="bottom" :offset="{top: -1}" :arrow="false" trigger="hover" v-on:onShow="show = 1" v-on:onHide="show = 0">
         <a :class="{'my-order': true, 'active': show}" href="javascript:void(0)">
@@ -151,10 +186,10 @@
     </div>
 
     <div class="components-view">
-      <div class="view-title">设置偏移</div>
+      <div class="view-title">{{ $t('eg_offset') }}</div>
 
       <mod-popover target-type="top" :offset="{top: -10, left: 50}" trigger="hover">
-        <mod-button :inline="true" >移入</mod-button>
+        <mod-button :inline="true" >{{ $t('hShow') }}</mod-button>
 
         <div class="my-content" slot="content">
           hello jsmod
@@ -167,10 +202,10 @@
 
 
     <div class="components-view">
-      <div class="view-title">内容动态载入（自动更新位置）</div>
+      <div class="view-title">{{ $t('eg_load') }}</div>
 
       <mod-popover target-type="top"   v-on:onShow="loadData">
-        <mod-button :inline="true" >点击</mod-button>
+        <mod-button :inline="true" >{{ $t('cShow') }}</mod-button>
 
         <div :class="{'my-loading': true, 'loaded': !!loadedData}" slot="content">
           <div v-if="loadedData">
@@ -188,13 +223,13 @@
 
 
     <div class="components-view">
-      <div class="view-title">手动控制 popover 显示|隐藏</div>
+      <div class="view-title">{{ $t('eg_manual') }}</div>
 
       <mod-popover target-type="top" v-model="show2" trigger="manual">
-        <mod-button :inline="true" @click="show2 = true">点击显示</mod-button>
+        <mod-button :inline="true" @click="show2 = true">{{ $t('cShow') }}</mod-button>
 
         <div class="my-content" slot="content">
-          <a href="javascript:void(0)" @click="show2 = false">关闭</a>
+          <a href="javascript:void(0)" @click="show2 = false">close</a>
         </div>
       </mod-popover>
 
@@ -203,10 +238,10 @@
 
 
     <div class="components-view">
-      <div class="view-title">不使用背景</div>
+      <div class="view-title">{{ $t('eg_background') }}</div>
 
       <mod-popover :background="false" trigger="click"  :arrow="false" :offset="{left: -110}">
-        <mod-button >点击显示</mod-button>
+        <mod-button >{{ $t('cShow') }}</mod-button>
 
         <mod-image slot="content" :width="260" :height="405" src="https://oajua4pqj.qnssl.com/o_1bhj8vas16rk1ffc1jhj1uhc13sg7.png"></mod-image>
       </mod-popover>
@@ -220,20 +255,24 @@
 
 <script>
   import Layout from '../common/common_layout';
-  import code from './popover.ch';
-  import api from './popover.ch.api.md'
+  import code from './popover.code';
+
+  import apiZh from './popover.zh.api.md'
+  import apiEn from './popover.en.api.md'
+
 
   export default {
     data () {
       return {
-        current: 0,
-        PAGE_TYPE: this.$jsmod.pagination.PAGE_TYPE,
         targetType: 'top',
         show: 0,
         show2: false,
         loadedData: null,
         code: code,
-        api: api
+        api: {
+          en: apiEn,
+          zh: apiZh
+        }
       }
     },
     methods: {
