@@ -1,7 +1,19 @@
 let code = {};
 
+code.overview = {};
 
-code.overview = `
+code.overview.en = `
+\`ModImage\` to solve the front-end development of the various needs of image processing, you can use the same as the use of the original \`img\` tag and get the following features:
+
+* display \`loading\` status, you also can customize it
+* two kinds of picture zoom mode: \`contain \` \`cover \`, then you do not care about the size of picture
+* provide layzload and easy to use
+* can use \`ratio\` control height
+
+**recommended to set \`height \` or \`ratio\`, otherwise the container width will be 100%, the height of the picture is the real height**
+`;
+
+code.overview.zh = `
 \`ModImage\` 解决前端开发中图片处理的各种需求，你可以像使用原生 \`img\` 标签一样使用且得到了以下功能：
 
 * \`loading\` 状态显示，加载完成渐变
@@ -26,8 +38,9 @@ code.base = `
 \`\`\`
 `;
 
+code.event = {};
 
-code.event = `
+code.event.zh = `
 \`auto\` 标识是否自动加载图片，默认为 true，自己控制即可实现手动加载
 
 \`\`\`javascript
@@ -46,6 +59,27 @@ code.event = `
 </template>
 \`\`\`
 `;
+
+code.event.en = `
+\`auto \` to identify whether to automatically load the picture, the default is true. control it can be loaded manually
+
+\`\`\`javascript
+<template>
+  <div class="image-line">
+    <mod-image class="image-line-item" v-on:loaded="onLoaded" :auto="auto" :width="400" :ratio="0.5" src="https://oajua4pqj.qnssl.com/o_1bfbrlmul10k1f946ds2jjgh6c.jpeg?a=1"></mod-image>
+
+    <mod-image class="image-line-item" :auto="auto" scale="contain"
+        loading-url="http://localhost:8080/static/img/logo.245c948.jpeg"
+        :width="400" :ratio="0.5" src="https://oajua4pqj.qnssl.com/o_1bhj8vas16rk1ffc1jhj1uhc13sg7.png"></mod-image>
+  </div>
+
+  <div class="view-actions">
+    <mod-button :inline="true" v-on:click="auto = true">加载图片</mod-button>
+  </div>
+</template>
+\`\`\`
+`;
+
 
 code.lazy = `
 \`\`\`javascript
@@ -71,7 +105,9 @@ code.error = `
 \`\`\`
 `;
 
-code.dialog = `
+code.dialog = {};
+
+code.dialog.zh = `
 **对于在默认隐藏容器中的图片，请务必设置\`width\` 和 \`ratio\` 或 \`height\`，否则内部无法知道容器的尺寸进行图片缩放**
 \`\`\`javascript
 <template>
@@ -84,9 +120,20 @@ code.dialog = `
 \`\`\`
 `;
 
-code.change = `
-对于容器尺寸的改变，都会触发图片重绘。
+code.dialog.en = `
+**\`ModImage\` in the default hidden container, make sure to set \`width\` and \`ratio \` or \`height \`, otherwise it can not know the size of the ModImage container.**
+\`\`\`javascript
+<template>
+  <mod-alert v-model="show1">
+    <mod-image :width="400" :ratio="0.5" src="https://oajua4pqj.qnssl.com/o_1bhto5e7k15lq1j3513ufjtv1gfr7.png"></mod-image>
+  </mod-alert>
 
+  <mod-button :inline="true" v-on:click="show1 = true">点击显示</mod-button>
+</template>
+\`\`\`
+`;
+
+code.change = `
 \`\`\`javascript
 <template>
   <mod-image class="image-has-background" :clickReload="true" :ratio="ratio" v-bind:src="src" :scale="scale" :width="400"/>

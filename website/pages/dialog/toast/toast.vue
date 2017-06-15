@@ -1,34 +1,53 @@
+<i18n>
+  {
+    "en": {
+      "eg_base": "Basic Usage",
+      "eg_api": "Use API",
+      "eg_api_base": "Create",
+      "eg_api_modify": "Create && Modify",
+      "eg_api_event": "Listen Events"
+    },
+    "zh": {
+      "eg_base": "基础示例",
+      "eg_api": "使用API",
+      "eg_api_base": "创建",
+      "eg_api_modify": "创建并修改",
+      "eg_api_event": "监听事件"
+    }
+  }
+</i18n>
+
 <template>
-  <layout title="Toast" source="dialog/toast.vue" :api="api">
+  <layout title="Toast" source="dialog/toast/toast.vue" :apiLang="api">
     <div class="components-view">
-      <j-code :overview="true" :source="code.overview"></j-code>
+      <j-code :overview="true" :langSources="code.overview"></j-code>
     </div>
 
     <div class="components-view">
-      <div class="view-title">基础实例</div>
+      <div class="view-title">{{ $t('eg_base') }}</div>
 
       <mod-toast v-model="show1" content="默认样式弹窗"></mod-toast>
       <mod-toast v-model="show2" type="loading"></mod-toast>
       <mod-toast v-model="show3" type="success"></mod-toast>
       <mod-toast v-model="show4" type="error"></mod-toast>
 
-      <mod-button :inline="true" v-on:click="show1 = !show1" >显示</mod-button>
-      <mod-button :inline="true" v-on:click="show2 = !show2" >显示Loading</mod-button>
-      <mod-button :inline="true" v-on:click="show3 = !show3" >显示Success</mod-button>
-      <mod-button :inline="true" v-on:click="show4 = !show4" >显示Error</mod-button>
+      <mod-button :inline="true" v-on:click="show1 = !show1" >{{ $t('cShow') }}</mod-button>
+      <mod-button :inline="true" v-on:click="show2 = !show2" >{{ $t('cShow') }} Loading</mod-button>
+      <mod-button :inline="true" v-on:click="show3 = !show3" >{{ $t('cShow') }} Success</mod-button>
+      <mod-button :inline="true" v-on:click="show4 = !show4" >{{ $t('cShow') }} Error</mod-button>
 
-      <j-code  :source="code.base"></j-code>
+      <j-code  :langSources="code.base"></j-code>
 
     </div>
 
     <div class="components-view">
-      <div class="view-title">API操作</div>
+      <div class="view-title">{{ $t('eg_api') }}</div>
 
-      <mod-button :inline="true" v-on:click="showToast" >API 调用</mod-button>
-      <mod-button :inline="true" v-on:click="showToast2" >API 调用并修改实例</mod-button>
-      <mod-button :inline="true" v-on:click="showToast3" >监听隐藏</mod-button>
+      <mod-button :inline="true" v-on:click="showToast" >{{ $t('eg_api_base') }}</mod-button>
+      <mod-button :inline="true" v-on:click="showToast2" >{{ $t('eg_api_modify') }}</mod-button>
+      <mod-button :inline="true" v-on:click="showToast3" >{{ $t('eg_api_event') }}</mod-button>
 
-      <j-code  :source="code.api"></j-code>
+      <j-code  :langSources="code.api"></j-code>
 
     </div>
 
@@ -38,12 +57,16 @@
 <script>
   import Layout from '../../common/common_layout';
   import code from './toast.ch';
-  import api from './toast.ch.api.md'
+  import apiZh from './toast.zh.api.md'
+  import apiEn from './toast.en.api.md'
 
   export default {
     data () {
       return {
-        api: api,
+        api: {
+          en: apiEn,
+          zh: apiZh
+        },
         code: code,
         show1: false,
         show2: false,
