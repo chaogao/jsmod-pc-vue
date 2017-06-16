@@ -1,7 +1,12 @@
 let code = {};
 
-code.overview = `
+code.overview = {};
+
+code.overview.zh = `
 \`ModTab\` 简化了分栏功能的开发，默认提供简单样式。为实现最大自由度的样式定制，你可以使用[作用域插槽](https://vuefe.cn/v2/guide/components.html#作用域插槽)重写默认样式，示例三将详细说明
+`
+code.overview.en = `
+\`ModTab\` provides a simple style by default. To customize the style for maximum freedom, you can override the default style using the [scoped slot](https://vuejs.org/v2/guide/components.html#Scoped-Slots). Example 3 will explain how to use
 `
 
 code.base = `
@@ -66,7 +71,87 @@ code.fade = `
 \`\`\`
 `;
 
-code.slot = `
+code.slot = {};
+
+code.slot.en = `
+in order to bring the development of high degree of freedom, \`ModTab\` design a more complex program to achieve a custom style, you need to understand:
+
+1. \`tabContainerClass\` set class for tab container
+2. \`tabClass\` set class for tab-item
+3. \`containerClass\` set class for Tab-Content group container
+4. set up custom data use prop \`data\` for \`ModTabItem\`
+5. use [scoped slot](https://vuejs.org/v2/guide/components.html#Scoped-Slots) customize elements and style
+
+\`\`\`javascript
+<template>
+  <mod-tab :tabContainerClass="'custom-container-tab'"  :containerClass="'custom-container'">
+    <template slot="tab" scope="props">
+      <span :class="{'custom-tab': true, 'custom-tab-active': props.active}">
+        {{ props.label }}
+        <span class="badge" v-if="props.data.count">{{ props.data.count }}</span>
+      </span>
+    </template>
+
+    <mod-tab-item label="项目A" :data="{count: 2}">
+      <div class="tab-content">
+        <p>这是标签栏目1</p>
+        <p>这是标签栏目1</p>
+        <p>这是标签栏目1</p>
+        <mod-image :width="300" :ratio="0.8" src="https://oajua4pqj.qnssl.com/o_1bfba3u05hj917a9bmkeeq184dc.jpeg"></mod-image>
+      </div>
+    </mod-tab-item>
+
+    <mod-tab-item label="项目B">
+      <div class="tab-content">
+        <p>这是标签栏目2</p>
+        <p>这是标签栏目2</p>
+        <p>这是标签栏目2</p>
+      </div>
+    </mod-tab-item>
+  </mod-tab>
+</template>
+
+<style lang="stylus">
+
+.custom-container
+  border: 1px solid ##e41b23;
+
+.custom-container-tab
+  padding-left: 10px;
+
+  .custom-tab
+    margin-bottom: -1px;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid ##e41b23;
+    background: #fff;
+
+    .badge
+      display: inline-block;
+      background: ##e41b23;
+      color: #fff;
+      border-radius: 15px;
+      line-height: 20px;
+      width: 20px;
+      text-align: center;
+
+
+    &.custom-tab-active
+      border-bottom: 1px solid #fff;
+      position: relative;
+      z-index: 1;
+      color: ##e41b23;
+
+</style>
+
+\`\`\`
+
+`;
+
+
+code.slot.zh = `
 为了带来高自由度的样式开发，\`ModTab\` 设计了比较复杂的自定义方案，实现自定义样式你需要了解：
 
 1. 设置 \`tabContainerClass\` 为分类卡片容器增加样式类
@@ -142,7 +227,6 @@ code.slot = `
 </style>
 
 \`\`\`
-
 `;
 
 export default code;

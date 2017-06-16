@@ -1,11 +1,27 @@
+<i18n>
+  {
+    "en": {
+      "eg_base": "Basic Usage: Two switching effects",
+      "eg_indicator": "Set Indicator Color && AutoPlay",
+      "eg_disalbe": "No Indicator && Pager"
+    },
+    "zh": {
+      "eg_base": "基础示例：两种切换效果",
+      "eg_indicator": "设置指示器颜色和自动播放",
+      "eg_disalbe": "没有指示器和页码"
+
+    }
+  }
+</i18n>
+
 <template>
-  <layout title="Banner" source="carousel/banner.vue" :api="api">
+  <layout title="Banner" source="carousel/banner/banner.vue" :apiLang="api">
     <div class="components-view">
-      <j-code :overview="true" :source="code.overview"></j-code>
+      <j-code :overview="true" :langSources="code.overview"></j-code>
     </div>
 
     <div class="components-view">
-      <div class="view-title">基础实例（渐变切换）</div>
+      <div class="view-title">{{ $t('eg_base') }}</div>
 
       <div class="carousel-line">
         <div class="carousel-line-item">
@@ -21,12 +37,12 @@
         </div>
       </div>
 
-      <j-code :source="code.base"></j-code>
+      <j-code :langSources="code.base"></j-code>
 
     </div>
 
     <div class="components-view">
-      <div class="view-title">设置指示器的颜色，自动播放</div>
+      <div class="view-title">{{ $t('eg_indicator') }}</div>
 
       <div class="carousel-line">
         <div class="carousel-line-item">
@@ -37,11 +53,10 @@
       </div>
 
       <j-code :source="code.color"></j-code>
-
     </div>
 
     <div class="components-view">
-      <div class="view-title">不显示指示器（页码）</div>
+      <div class="view-title">{{ $t('eg_disalbe') }}</div>
 
       <div class="carousel-line">
         <div class="carousel-line-item">
@@ -59,9 +74,10 @@
 </template>
 
 <script>
-  import Layout from '../common/common_layout';
+  import Layout from '../../common/common_layout';
   import code from './banner.ch';
-  import api from './banner.ch.api.md';
+  import apiEn from './banner.en.api.md';
+  import apiZh from './banner.zh.api.md';
 
   export default {
     components: {
@@ -71,7 +87,10 @@
     data () {
       return {
         code: code,
-        api: api,
+        api: {
+          en: apiEn,
+          zh: apiZh
+        },
         list: [
           {
             src: 'https://oajua4pqj.qnssl.com/o_1bfbdh2181rcakt21u8uhvg1299r.jpeg',

@@ -1,5 +1,4 @@
 ### props
-
 | name        | default     |   type      | description |
 | ----------- |-------------|-------------|-------------|
 | list      |             |     Array | Banner 的图片数据，格式为 `[{src: 'http://xxx.jpg', href: 'http://xxx.com'}]` |
@@ -17,9 +16,7 @@
 | controlSize      |        16px     |  String   | 左右切换按钮的大小 |
 
 
-
 ### events
-
 | name        | description |
 | ----------- |------------------ |
-| loaded      | 加载成功的回调 |
+| swiped      | 激活某个 `mod-carousel-item` |

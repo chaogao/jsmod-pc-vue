@@ -20,7 +20,6 @@
 
 
 ### events
-
 | name        | description |
 | ----------- |------------------ |
-| loaded      | 加载成功的回调 |
+| swiped      | 激活某个 `mod-carousel-item` |

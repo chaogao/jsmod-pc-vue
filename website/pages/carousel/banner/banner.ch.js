@@ -1,14 +1,24 @@
 let code = {};
 
-code.overview = `
+code.overview = {};
+
+code.overview.zh = `
 \`ModBanner\` 为集成度较高，可扩展性较低的模块。只需提供图片，跳转链接数据即可
 
 * 使用数据简单的构建 banner 显示
-* 自带图片缩放，图片懒加载
+* 自带图片缩放，图片预加载
 `;
 
+code.overview.en = `
+\`ModBanner\` is higher integration and lower scalability component. just provide pictures, link href
 
-code.base = `
+* just use the data to create banner
+* with \`ModImage\` zoom picture && preloaded images (default count is 2)
+`;
+
+code.base = {};
+
+code.base.zh = `
 列表数据结构如下：
 \`\`\`javascript
 {
@@ -37,6 +47,55 @@ code.base = `
 
 * \`src\` 为图片地址
 * \` href \` 为点击后的跳转地址，可以为空
+
+\`\`\`javascript
+<template>
+  <div class="carousel-line">
+    <div class="carousel-line-item">
+      <div class="banner-wrap">
+        <mod-banner ref="ca" :auto="true"  v-on:click="onClick" :ratio="0.5" :list="list"></mod-banner>
+      </div>
+    </div>
+
+    <div class="carousel-line-item">
+      <div class="banner-wrap">
+        <mod-banner ref="ca2" :auto="true" :fade="true"  v-on:click="onClick" :ratio="0.5" :list="list"></mod-banner>
+      </div>
+    </div>
+  </div>
+</template>
+\`\`\`
+`
+
+code.base.en = `
+The list data is as follows：
+\`\`\`javascript
+{
+  list: [
+    {
+      src: 'https://oajua4pqj.qnssl.com/o_1bfbdh2181rcakt21u8uhvg1299r.jpeg',
+      href: 'http://baidu.com'
+    },
+    {
+      src: 'https://oajua4pqj.qnssl.com/o_1bfba3u05hj917a9bmkeeq184dc.jpeg',
+    },
+    {
+      src: 'https://oajua4pqj.qnssl.com/o_1bfbasnqvfrin0o1cr9go2104qc.jpeg',
+    },
+
+    {
+      src: 'https://oajua4pqj.qnssl.com/o_1bfbb16e01a8b68f162d18c11qt9m.jpeg',
+    },
+
+    {
+      src: 'https://oajua4pqj.qnssl.com/o_1bfbrlmul10k1f946ds2jjgh6c.jpeg',
+    },
+  ]
+}
+\`\`\`
+
+* \`src\` is picture source
+* \` href \` is the address on click
 
 \`\`\`javascript
 <template>

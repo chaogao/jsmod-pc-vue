@@ -1,11 +1,27 @@
+<i18n>
+  {
+    "en": {
+      "eg_base": "Basic Usage",
+      "eg_fade": "Use Fade Effect Switch && Listen Events",
+      "eg_scoped": "Customize style and layout by scoped slot"
+    },
+    "zh": {
+      "eg_base": "基础示例：两种切换方式",
+      "eg_fade": "切换 tab 使用渐变，监听启用",
+      "eg_scoped": "使用作用域插槽实现自定义样式和布局"
+
+    }
+  }
+</i18n>
+
 <template>
-  <layout title="Tab" source="tab/index.vue" :api="api">
+  <layout title="Tab" source="tab/index.vue" :apiLang="api">
     <div class="components-view">
-      <j-code :overview="true" :source="code.overview"></j-code>
+      <j-code :overview="true" :langSources="code.overview"></j-code>
     </div>
 
     <div class="components-view">
-      <div class="view-title">基础实例</div>
+      <div class="view-title">{{ $t('eg_base') }}</div>
 
       <mod-tab>
         <mod-tab-item label="项目A(click)">
@@ -42,7 +58,7 @@
     </div>
 
     <div class="components-view">
-      <div class="view-title">切换tab使用渐变，监听启用</div>
+      <div class="view-title">{{ $t('eg_fade') }}</div>
 
       <mod-tab v-on:active="onActive" :fade="true">
         <mod-tab-item label="项目A">
@@ -68,7 +84,7 @@
     </div>
 
     <div class="components-view">
-      <div class="view-title">使用作用域插槽实现自定义样式</div>
+      <div class="view-title">{{ $t('eg_scoped') }}</div>
 
       <mod-tab :tabContainerClass="'custom-container-tab'"  :containerClass="'custom-container'">
         <template slot="tab" scope="props">
@@ -96,7 +112,7 @@
         </mod-tab-item>
       </mod-tab>
 
-      <j-code  :source="code.slot"></j-code>
+      <j-code  :langSources="code.slot"></j-code>
 
     </div>
   </layout>
@@ -105,13 +121,17 @@
 <script>
   import Layout from '../common/common_layout'
   import code from './index.ch'
-  import api from './index.ch.api.md'
+  import apiZh from './index.zh.api.md'
+  import apiEn from './index.en.api.md'
 
   export default {
     data () {
       return {
         code: code,
-        api: api,
+        api: {
+          en: apiEn,
+          zh: apiZh
+        }
       }
     },
 

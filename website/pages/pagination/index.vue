@@ -1,29 +1,48 @@
+<i18n>
+  {
+    "en": {
+      "eg_base": "Basic Usage",
+      "eg_base_three": "Go 3 Page",
+      "eg_show_page": "Change Display Page-Label Count",
+      "eg_spec": "Special page-label number of display",
+      "eg_scoped": "Customize Style by scoped style"
+    },
+    "zh": {
+      "eg_base": "基础示例",
+      "eg_base_three": "跳转到第三页",
+      "eg_show_page": "修改显示分页的个数",
+      "eg_spec": "特殊页数时的展示情况（1，2，3 页）",
+      "eg_scoped": "使用作用域插槽实现自定义样式"
+
+    }
+  }
+</i18n>
 <template>
-  <layout title="Pagination" source="pagination/index.vue"  v-on:api="showApi = true">
+  <layout title="Pagination" source="pagination/index.vue"  :apiLang="api">
     <div class="components-view">
-      <j-code  :source="code.overview" :overview="true"></j-code>
+      <j-code  :langSources="code.overview" :overview="true"></j-code>
     </div>
 
     <div class="components-view">
-      <div class="view-title">基础实例</div>
+      <div class="view-title">{{ $t('eg_base') }}</div>
 
       <mod-pagination v-model="current" :pageCount="10" v-on:active="onActive"></mod-pagination>
 
-      <mod-button :inline="true" v-on:click="current = 2">点击跳转到第三页</mod-button>
+      <mod-button :inline="true" v-on:click="current = 2">{{ $t('eg_base_three') }}</mod-button>
 
       <j-code  :source="code.base"></j-code>
     </div>
 
     <div class="components-view">
-      <div class="view-title">修改显示分页的个数</div>
+      <div class="view-title">{{ $t('eg_show_page') }}</div>
 
       <mod-pagination :maxShowPage="5" :pageCount="10"></mod-pagination>
 
-      <j-code  :source="code.count"></j-code>
+      <j-code  :langSources="code.count"></j-code>
     </div>
 
     <div class="components-view">
-      <div class="view-title">特殊页数时的展示情况（1，2，3 页）</div>
+      <div class="view-title">{{ $t('eg_spec') }}</div>
 
       <mod-pagination :pageCount="1" ></mod-pagination>
       <mod-pagination :pageCount="2" ></mod-pagination>
@@ -34,7 +53,7 @@
     </div>
 
     <div class="components-view">
-      <div class="view-title">使用作用域插槽实现自定义样式</div>
+      <div class="view-title">{{ $t('eg_scoped') }}</div>
 
       <mod-pagination v-model="current"  :pageCount="10" v-on:active="onActive">
         <template slot="item" scope="props" >
@@ -53,29 +72,27 @@
         </template>
       </mod-pagination>
 
-      <j-code  :source="code.slot"></j-code>
+      <j-code  :langSources="code.slot"></j-code>
     </div>
-
-
-    <mod-layer direction="horizontal" width="80%" v-model="showApi">
-      <j-code  :api="true" :source="api"></j-code>
-    </mod-layer>
   </layout>
 </template>
 
 <script>
   import Layout from '../common/common_layout'
   import code from './index.ch'
-  import api from './index.ch.api.md'
+  import apiZh from './index.zh.api.md'
+  import apiEn from './index.en.api.md'
 
   export default {
     data () {
       return {
         code: code,
         current: 0,
-        showApi: false,
         PAGE_TYPE: this.$jsmod.pagination.PAGE_TYPE,
-        api: api
+        api: {
+          en: apiEn,
+          zh: apiZh
+        }
       }
     },
     methods: {
