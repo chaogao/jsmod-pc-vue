@@ -3,5 +3,9 @@
   <img src="https://img.shields.io/npm/v/jsmod-pc-vue.svg?style=flat-square">
 </a>
 
+### v0.19
+1. 支持多语言
+`2017.06.20`
+
 ### v0.18
 `2017.06.13` 完成基础组件，文档，示例

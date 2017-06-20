@@ -27,6 +27,24 @@ Vue.use(JSMOD)
 进入 [jsmod-pc-vue](https://github.com/chaogao/jsmod-pc-vue) 下载 `lib/jsmod.pc.js` 并引入页面即可使用
 
 
+#### 3. 使用多语言
+
+**目前只提供`en` `zh`两种选择，默认语言为中文**
+
+#### 3.1. 在安装时设置
+
+```javascript
+  Vue.use(Jsmod, {
+    lang: 'en'
+  });
+```
+
+#### 3.2. 在代码中修改
+
+```javascript
+this.$jsmod.lang('en');
+```
+
 ### 当前版本
 
 <a href="https://github.com/chaogao/jsmod-pc-vue" target="_blank">

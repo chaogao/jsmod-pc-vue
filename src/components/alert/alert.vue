@@ -15,7 +15,7 @@
     <div class="jsmod-alert-footer" ref="footer" slot="footer">
       <slot name="footer">
         <mod-button  v-on:click="onFooterClick" :inline="true" :customStyle="buttonCustomStyle">
-          {{ btn }}
+          {{ getBtn }}
         </mod-button>
       </slot>
     </div>
@@ -23,11 +23,13 @@
 </template>
 
 <script>
-  import { ModDialog } from '../dialog';
-  import { ModButton } from '../button';
-  import { customEvent } from '../utils/event';
-  import ShowMixin from '../utils/show.mixin';
+  import { ModDialog } from '../dialog'
+  import { ModButton } from '../button'
+  import { customEvent } from '../utils/event'
+  import ShowMixin from '../utils/show.mixin'
+  import lang from '../utils/lang'
 
+  let langInstance = lang.get();
 
   export default {
     mixins: [ ShowMixin ],
@@ -58,8 +60,7 @@
       },
 
       btn: {
-        type: String,
-        default: '确认'
+        type: String
       },
 
       onClick: {
@@ -73,6 +74,12 @@
         baseStyle: {
           'border-radius': '10px'
         }
+      }
+    },
+
+    computed: {
+      getBtn () {
+        return this.btn || langInstance.lang.ok;
       }
     },
 

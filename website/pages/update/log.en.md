@@ -3,5 +3,8 @@
   <img src="https://img.shields.io/npm/v/jsmod-pc-vue.svg?style=flat-square">
 </a>
 
-### v0.18
-`2017.06.13` finish base components, docs, demos
+#### v0.19 `2017.06.20`
+support multiple languages
+
+#### v0.18 `2017.06.13`
+finish base components, docs, demos

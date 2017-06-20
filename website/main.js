@@ -3,7 +3,9 @@ import App from './App'
 import router from './router'
 
 import Jsmod from '../src'
-Vue.use(Jsmod);
+Vue.use(Jsmod, {
+  lang: 'en'
+});
 
 import JCode from './tools/code'
 Vue.component('JCode', JCode)

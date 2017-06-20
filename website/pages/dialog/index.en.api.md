@@ -14,6 +14,7 @@
 | footer      |             |    String   | header container，you can use the footer slot instead |
 | useMask     |      true   |    Boolean   | whether to display mask  |
 | isMaskClickHide |      true  |    Boolean   |  when click mask, whether to hide  |
+| contentScrollable|    true   |     Boolean   |  whether the content cann scroll |
 | width          |       |    [String, Number]   | you can set the percentage (80%), can also set number, when it is empty will automatically calculated size |
 | height         |       |    [String, Number]   | you can set the percentage (80%), can also set number, when it is empty will automatically calculated size |
 | offsetTop         |       |    Number   |  offset vertical position |

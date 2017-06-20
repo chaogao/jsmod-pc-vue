@@ -14,6 +14,10 @@
 <script>
   import { PAGE_TYPE } from './index'
 
+  import lang from '../utils/lang'
+
+  let langInstance = lang.get();
+
   export default {
     props: {
       value: {
@@ -164,11 +168,11 @@
 
       getLabel (item) {
         if (item.type == PAGE_TYPE.PRE) {
-          return '上一页'
+          return langInstance.lang.prePage;
         }
 
         if (item.type == PAGE_TYPE.NEXT) {
-          return '下一页'
+          return langInstance.lang.nextPage;
         }
 
         if (item.type == PAGE_TYPE.OMIT) {

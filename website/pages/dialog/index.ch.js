@@ -48,6 +48,44 @@ code.base = `
 </template>
 `;
 
+code.cross = {};
+
+code.cross.en = `
+if there is a cross-border element content can not be set to scroll
+
+\`\`\`javascript
+<template>
+  <mod-dialog v-model="showCrossBorder" :contentScrollable="false">
+    <div class="base-dialog">
+      hello jsmod
+
+      <div class="base-dialog-right"></div>
+    </div>
+  </mod-dialog>
+
+
+  <mod-button :inline="true" v-on:click="showCrossBorder = !showCrossBorder" >Click Me</mod-button>
+</template>
+`;
+
+code.cross.zh = `
+如果有越界的元素内容区域不能设置滚动
+
+\`\`\`javascript
+<template>
+  <mod-dialog v-model="showCrossBorder" :contentScrollable="false">
+    <div class="base-dialog">
+      hello jsmod
+
+      <div class="base-dialog-right"></div>
+    </div>
+  </mod-dialog>
+
+
+  <mod-button :inline="true" v-on:click="showCrossBorder = !showCrossBorder" >点击显示</mod-button>
+</template>
+`;
+
 
 code.offset = `
 \`\`\`javascript
@@ -114,7 +152,6 @@ code.complex.zh = `
 3. 内容区域为 350px 高的可滚动容器
 
 \`\`\`javascript
-
 <template>
   <mod-dialog :height="500" width="40%" v-model="show6" >
     <div slot="header" class="base-header">
@@ -151,7 +188,6 @@ use \`heade\` \`footer\` slot can fix \`default slot\` in center, eg:
 3. content is a scrollable container with 350px
 
 \`\`\`javascript
-
 <template>
   <mod-dialog :height="500" width="40%" v-model="show6" >
     <div slot="header" class="base-header">

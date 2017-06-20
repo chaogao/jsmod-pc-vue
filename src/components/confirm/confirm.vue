@@ -15,11 +15,11 @@
     <div class="jsmod-confirm-footer" ref="footer" slot="footer">
       <slot name="footer">
         <mod-button class="jsmod-confirm-footer-btn" v-on:click="_onBtnNo" :inline="true" :customStyle="btnNoStyle">
-          {{ btnNo }}
+          {{ getBtnNo }}
         </mod-button>
 
         <mod-button class="jsmod-confirm-footer-btn" v-on:click="_onBtnOk" :inline="true" :customStyle="btnOkStyle">
-          {{ btnOk }}
+          {{ getBtnOk }}
         </mod-button>
       </slot>
     </div>
@@ -27,10 +27,13 @@
 </template>
 
 <script>
-  import { ModDialog } from '../dialog';
-  import { ModButton } from '../button';
-  import { customEvent } from '../utils/event';
-  import ShowMixin from '../utils/show.mixin';
+  import { ModDialog } from '../dialog'
+  import { ModButton } from '../button'
+  import { customEvent } from '../utils/event'
+  import ShowMixin from '../utils/show.mixin'
+  import lang from '../utils/lang'
+
+  let langInstance = lang.get();
 
   export default {
     mixins: [ShowMixin],
@@ -48,14 +51,13 @@
         type: String,
         default: ''
       },
+
       btnOk: {
-        type: String,
-        default: '确认'
+        type: String
       },
 
       btnNo: {
-        type: String,
-        default: '取消'
+        type: String
       },
 
       content: {
@@ -95,6 +97,16 @@
         baseStyle: {
           'border-radius': '10px'
         }
+      }
+    },
+
+    computed: {
+      getBtnOk () {
+        return this.btnOk || langInstance.lang.confirm;
+      },
+
+      getBtnNo () {
+        return this.btnNo || langInstance.lang.cancel;
       }
     },
 

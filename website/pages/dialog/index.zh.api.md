@@ -14,6 +14,7 @@
 | footer      |             |    String   |  尾部区域，可用 footer slot 代替|
 | useMask     |      true   |    Boolean   |  是否显示遮盖层 |
 | isMaskClickHide |      true  |    Boolean   |  点击遮盖区域是否关闭弹窗|
+| contentScrollable|    true   |     Boolean   |  设置内容区域是否可以滚动 |
 | width          |       |    [String, Number]   |  可以设置百分比（80%）, 也可以设置数值，当为空时会自动根据内容区域计算|
 | height         |       |    [String, Number]   |  可以设置百分比（80%）, 也可以设置数值，当为空时会自动根据内容区域计算|
 | offsetTop         |       |    Number   |  弹层垂直方向的偏移 |

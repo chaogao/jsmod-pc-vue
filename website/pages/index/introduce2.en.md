@@ -25,6 +25,24 @@ Vue.use(JSMOD)
 
 link to [jsmod-pc-vue](https://github.com/chaogao/jsmod-pc-vue), download `lib/jsmod.pc.js` import to your page
 
+#### 3. Use multiple languages
+
+**only `en` `zh` two options, the default language for the Chinese**
+
+#### 3.1. setting on install
+
+```javascript
+  Vue.use(Jsmod, {
+    lang: 'en'
+  });
+```
+
+#### 3.2. change in code
+
+```javascript
+this.$jsmod.lang('en');
+```
+
 
 ### Latest version
 

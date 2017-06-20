@@ -17,25 +17,25 @@
 <script>
   import { ModDialog } from '../dialog';
   import { ModSpin } from '../spin';
-
   import ShowMixin from '../utils/show.mixin';
+
+  import lang from '../utils/lang'
+
+  let langInstance = lang.get();
 
   const TOAST_TYPES = {
     'loading': {
       icon: 'iconjsmod-shuaxin',
-      content: '加载中',
       timeout: 0
     },
 
     'success': {
       icon: 'iconjsmod-yuanxingxuanzhong',
-      content: '成功',
       timeout: 1500,
     },
 
     'error': {
       icon: 'iconjsmod-guanbi2',
-      content: '失败',
       timeout: 1500,
     },
 
@@ -115,7 +115,22 @@
         if (this.content !== undefined) {
           return this.content;
         } else {
-          return TOAST_TYPES[this.type] && TOAST_TYPES[this.type].content;
+          switch (this.type) {
+            case 'loading':
+              return langInstance.lang.loading;
+              break;
+
+            case 'error':
+              return langInstance.lang.error;
+              break;
+
+            case 'success':
+              return langInstance.lang.success
+              break;
+
+            default:
+              return '';
+          }
         }
       }
     },

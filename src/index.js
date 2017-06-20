@@ -24,6 +24,8 @@ import { ModPagination, PAGE_TYPE } from './components/pagination';
 
 import { ModPopover } from './components/popover';
 
+import lang from './components/utils/lang'
+
 
 import './styles/utils.styl';
 import './styles/transition.styl';
@@ -53,6 +55,11 @@ const install = (Vue, options) => {
     return;
   }
 
+  // 设置多语言
+  if (options && ['zh', 'en'].indexOf(options.lang) > -1) {
+    lang.set(options.lang);
+  }
+
   Object.keys(Components).forEach(key => Vue.component(key, Components[key]));
 
   Vue.prototype.$jsmod = {
@@ -63,7 +70,8 @@ const install = (Vue, options) => {
     'toast': Toast,
     'pagination': {
       PAGE_TYPE: PAGE_TYPE
-    }
+    },
+    'lang': lang.set 
   };
 }
 

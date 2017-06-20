@@ -58,12 +58,19 @@ import CommonFooter from './common_footer';
 
 export default {
 	name: 'common-layout',
+
 	data () {
 		return {
 			winHeight: this.containerClass == 'container-gray' ? (window.outerHeight || window.innerHeight) - 45 : 0,
       showApi: false
 		}
 	},
+
+  created () {
+    this.$watch('$i18n.locale', () => {
+      this.$jsmod.lang(this.$i18n.locale);
+    });
+  },
 
 	props: ['title', 'hideFooter', 'containerClass', 'isShowNotFound', 'footerTab', 'hideBack', 'rightBtn', 'onRigthBtn', 'OrderTip', 'isService', 'isTitle', 'source', 'api', 'apiLang'],
 

@@ -1,11 +1,11 @@
 <template>
   <transition v-bind:name="useMask ? 'jsmod-mask' : 'jsmod-mask-none'">
-    <div v-on:touchmove="onTouchmove" v-show="canShow" @click="maskHide" :class="['jsmod-mask', {'jsmod-mask-none': !useMask}]">
+    <div v-show="canShow" @click="maskHide" :class="['jsmod-mask', {'jsmod-mask-none': !useMask}]">
       <div ref="htmlContent" :style="htmlStyle" :class="['jsmod-dialog-html', {'jsmod-dialog-html-none-mask': !useMask}]">
         <div ref="headerContent" class="jsmod-dialog-solt-header">
           <slot name="header"><div v-html="header"></div></slot>
         </div>
-        <div ref="soltContent" class="jsmod-dialog-solt-content" :style="{overflow: 'auto', backgroundColor: soltBackgroundColor}">
+        <div ref="soltContent" class="jsmod-dialog-solt-content" :style="{'overflow': contentScrollable ? 'auto' : 'visiable', backgroundColor: soltBackgroundColor}">
           <div ref="soltContentInner">
             <slot><div v-html="html"></div></slot>
           </div>
@@ -29,38 +29,47 @@
       html: String,
       header: String,
       footer: String,
+
       useMask: {
         type: Boolean,
         default: true
       },
-      isScrollAble: {
+
+      contentScrollable: {
         type: Boolean,
-        default: false
+        default: true
       },
+
       isMaskClickHide: {
         type: Boolean,
         default: true,
       },
+
       width: {
         type: [String, Number]
       },
+
       height: {
         type: [String, Number]
       },
+
       offsetTop: {
         type: Number,
         default: 0
       },
+
       backgroundColor: {
         type: [String, Boolean],
         default: '#fff'
       },
+
       extendStyle: {
         type: Object,
         default () {
           return {};
         }
       },
+
       soltBackgroundColor: {
         type: [String, Boolean],
         default: false
@@ -119,12 +128,6 @@
         }
         if (e.target.classList.contains('jsmod-mask')) {
           this.canShow = false;
-        }
-      },
-
-      onTouchmove (e) {
-        if (e.target == e.currentTarget) {
-          !this.isScrollAble && e.preventDefault();
         }
       },
 
@@ -194,7 +197,6 @@
     top: 50%;
     max-height: 90%;
     max-width: 90%;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     transform: translate(-50%, -50%);
@@ -205,7 +207,6 @@
 
 
   .jsmod-dialog-solt-content
-    overflow: hidden;
     position: relative;
     flex: 1 1 auto;
 

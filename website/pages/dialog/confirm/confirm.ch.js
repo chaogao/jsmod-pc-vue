@@ -203,7 +203,12 @@ code.api = `
     methods: {
       showConfirm () {
         this.$jsmod.confirm.show({
-          content: 'api 显示的确认窗'
+          content: 'api 显示的确认窗',
+          onClick (e) {
+            self.$jsmod.toast.show({
+              content: '点击了：' + (e.result ? '确认' : '取消')
+            });
+          }
         })
       }
     }

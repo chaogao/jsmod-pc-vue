@@ -5,6 +5,7 @@
       "eg_base_auto": "Auto Width and height",
       "eg_base_fix": "Static Width and height",
       "eg_base_percentage": "Percentage Width and height",
+      "eg_corss_border": "Cross Border",
       "eg_offset": "Offset Vertical",
       "eg_update": "Auto Update Position",
       "eg_mask": "Disable Mask",
@@ -16,6 +17,7 @@
       "eg_base": "基础示例",
       "eg_base_auto": "自动宽高",
       "eg_base_fix": "固定宽高",
+      "eg_corss_border": "内容越界",
       "eg_base_percentage": "宽高百分比",
       "eg_offset": "垂直方向偏移",
       "eg_update": "自动更新位置",
@@ -59,6 +61,25 @@
       <mod-button :inline="true" v-on:click="show1_2 = !show1_2" >{{ $t('eg_base_percentage') }}</mod-button>
 
       <j-code :source="code.base"></j-code>
+    </div>
+
+
+    <div class="components-view">
+      <div class="view-title">{{ $t('eg_corss_border') }}</div>
+
+      <mod-dialog v-model="showCrossBorder" :contentScrollable="false">
+        <div class="base-dialog">
+          hello jsmod
+
+          <div class="base-dialog-right"></div>
+        </div>
+      </mod-dialog>
+
+
+      <mod-button :inline="true" v-on:click="showCrossBorder = !showCrossBorder" >{{ $t('cShow') }}</mod-button>
+
+      <j-code :langSources="code.cross"></j-code>
+
     </div>
 
     <div class="components-view">
@@ -183,6 +204,7 @@
         show5: false,
         show6: false,
         show7: false,
+        showCrossBorder: false,
         api: {
           en: apiEn,
           zh: apiZh
@@ -233,6 +255,15 @@
     text-align: center;
     background: #efefef;
     padding: 10px;
+    position: relative;
+
+    .base-dialog-right
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: red;
+      right: -20px;
+      top: -20px;
 
   .base-dialog-item
     padding: 20px 20px;
