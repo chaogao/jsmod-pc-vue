@@ -11,7 +11,7 @@
 | value       | false       |    Boolean  | the display status of component (if you set v-model do not set this value)  |
 | content     |             |    String   |  main container，you can use the default slot instead |
 | title       |             |    String   |  title container，you can use the title slot instead |
-| width       |             |    [String, Number]   | you can set the percentage (80%), can also set number, when it is empty will automatically calculated size |
+| width       |  520        |    [String, Number]   | you can set the percentage (80%), can also set number, when it is empty(0) will automatically calculated size |
 | btnOk       |  confirm    |    String   | confirm button text |
 | btnNo       |  cancel     |    String   | cancel button text |
 | btnOkStyle  |             |    Object   | styles for confirm button |
