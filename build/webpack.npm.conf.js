@@ -16,13 +16,14 @@ module.exports = {
   },
 
   module: {
-    rules: (utils.styleLoaders({ sourceMap: config.npm.cssSourceMap })).concat([
+    rules: (utils.styleLoaders({ sourceMap: config.npm.cssSourceMap, extract: true})).concat([
       {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
           loaders: utils.cssLoaders({
-            sourceMap: config.npm.cssSourceMap
+            sourceMap: config.npm.cssSourceMap,
+            extract: true
           })
         }
       },
@@ -60,6 +61,10 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': config.npm.env
+    }),
+
+    new ExtractTextPlugin({
+      filename: 'jsmod.pc.css'
     })
   ],
 

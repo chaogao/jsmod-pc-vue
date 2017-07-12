@@ -1,5 +1,7 @@
 const DIALOG_ZINDEX_BEGIN = 10000;
 
+import Vue from 'vue';
+
 let dialogArr = {};
 let zIndexOffset = 0;
 
@@ -9,7 +11,7 @@ let InjectTools = {
     if (!this.$root) {
       this.createRoot();
     }
-    
+
     $el.style.zIndex = DIALOG_ZINDEX_BEGIN + zIndexOffset;
     zIndexOffset += 1;
     this.$root.appendChild($el);
@@ -42,12 +44,6 @@ export default {
     return {
       calcWidth: undefined,
       calcHeight: undefined,
-    }
-  },
-
-  beforeMount () {
-    if (this.$el) {
-      this.__jsmod_dialog_zindex = InjectTools.append(this.$el);
     }
   },
 

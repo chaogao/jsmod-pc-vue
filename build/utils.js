@@ -36,8 +36,7 @@ exports.cssLoaders = function (options) {
     // (which is the case during production build)
     if (options.extract) {
       return ExtractTextPlugin.extract({
-        use: loaders,
-        fallback: 'vue-style-loader'
+        use: loaders
       })
     } else {
       return ['vue-style-loader'].concat(loaders)
@@ -47,10 +46,6 @@ exports.cssLoaders = function (options) {
   // https://vue-loader.vuejs.org/en/configurations/extract-css.html
   return {
     css: generateLoaders(),
-    postcss: generateLoaders(),
-    less: generateLoaders('less'),
-    sass: generateLoaders('sass', { indentedSyntax: true }),
-    scss: generateLoaders('sass'),
     stylus: generateLoaders('stylus'),
     styl: generateLoaders('stylus'),
     i18n: '@kazupon/vue-i18n-loader'
@@ -68,5 +63,6 @@ exports.styleLoaders = function (options) {
       use: loader
     })
   }
+
   return output
 }

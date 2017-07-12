@@ -18,13 +18,14 @@ npm install jsmod-pc-vue --save
 ```javascript
 import Vue from 'vue'
 import JSMOD from 'jsmod-pc-vue'
+import 'jsmod-pc-vue/lib/jsmod.pc.css'
 
 Vue.use(JSMOD)
 ```
 
 #### 2. 使用 `script` 安装`（不推荐）`
 
-进入 [jsmod-pc-vue](https://github.com/chaogao/jsmod-pc-vue) 下载 `lib/jsmod.pc.js` 并引入页面即可使用
+进入 [jsmod-pc-vue](https://github.com/chaogao/jsmod-pc-vue) 下载 `lib/jsmod.pc.js` `lib/jsmod.pc.css` 并引入页面即可使用
 
 
 #### 3. 使用多语言

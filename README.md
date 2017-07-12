@@ -18,6 +18,7 @@
 ### Overview
 The goal of `jsmod` is to provide a high degree of freedom (high scalability) ui components, and unified desktop and mobile usage, is a **client-side** component library
 
+### Support [SSR](https://ssr.vuejs.org/)
 
 ### Install && Usage
 #### 1. Use `webpack`

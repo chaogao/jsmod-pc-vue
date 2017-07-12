@@ -17,13 +17,14 @@ npm install jsmod-pc-vue --save
 ```javascript
 import Vue from 'vue'
 import JSMOD from 'jsmod-pc-vue'
+import 'jsmod-pc-vue/lib/jsmod.pc.css'
 
 Vue.use(JSMOD)
 ```
 
 #### 2. Use `script` `（not recommend）`
 
-link to [jsmod-pc-vue](https://github.com/chaogao/jsmod-pc-vue), download `lib/jsmod.pc.js` import to your page
+link to [jsmod-pc-vue](https://github.com/chaogao/jsmod-pc-vue), download `lib/jsmod.pc.js` `lib/jsmod.pc.css` import to your page
 
 #### 3. Use multiple languages
 
