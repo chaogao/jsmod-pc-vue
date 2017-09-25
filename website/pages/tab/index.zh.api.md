@@ -7,7 +7,7 @@
 | tabContainerClass |             |    String   |  为分类卡片容器增加样式类 |
 | tabClass |             |    String   |  为分类项目增加样式类 |
 | containerClass |             |    String   |  为内容容器增加样式类 |
-| fade |        false     |    Boolean   |  切换时是否用透明度渐变 |
+| fade |        false     |    Boolean   |  切换时是否用透明度渐变，设置为 true，item 的高度会自适应，适合内部有变高元素时使用 |
 
 ### events
 | name        | description |

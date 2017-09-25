@@ -184,11 +184,14 @@
 
         this.tabs = [];
 
-        tabs.forEach((item) => {
+        tabs.forEach((item, idx) => {
           this.tabs.push({
             label: item.label,
             data: item.data || {}
           });
+
+          item.idx = idx;
+          item.checkActive(this.currentInner);
         });
 
         this.createSwiper(this.currentInner);

@@ -333,6 +333,16 @@
   top: 0;
   width: 100%;
 }
+.jsmod-tab-item.jsmod-tab-item-fade {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+.jsmod-tab-item.jsmod-tab-item-fade.jsmod-tab-item-active {
+  display: block;
+  overflow: auto;
+  height: auto;
+}
 
 .jsmod-pagination .jsmod-pagination-list {
   font-size: 0;

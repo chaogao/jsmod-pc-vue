@@ -2,12 +2,12 @@
   {
     "en": {
       "eg_base": "Basic Usage",
-      "eg_fade": "Use Fade Effect Switch && Listen Events",
+      "eg_fade": "Use Fade Effect Switch && Listen Events, height will set auto",
       "eg_scoped": "Customize style and layout by scoped slot"
     },
     "zh": {
       "eg_base": "基础示例：两种切换方式",
-      "eg_fade": "切换 tab 使用渐变，监听启用",
+      "eg_fade": "切换 tab 使用渐变，高度会设置为自适应",
       "eg_scoped": "使用作用域插槽实现自定义样式和布局"
 
     }

@@ -7,7 +7,7 @@
 | tabContainerClass |       |    String   |  set class for tab container |
 | tabClass    |             |    String   |  set class for tab-item |
 | containerClass |          |    String   |  set class for Tab-Content group container |
-| fade        |   false     |    Boolean  |  whether to use fade effect |
+| fade        |   false     |    Boolean  |  whether to use fade effect, if set true the item will has auto height |
 
 ### events
 | name        | description |
