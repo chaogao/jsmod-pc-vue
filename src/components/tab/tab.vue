@@ -69,7 +69,11 @@
       containerStyle () {
         let obj = {};
 
-        obj.height = this.height + 'px';
+        if (this.fade) {
+          obj.height = 'auto';
+        } else {
+          obj.height = this.height + 'px';
+        }
 
         return obj;
       }
