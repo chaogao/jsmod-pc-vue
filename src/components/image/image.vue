@@ -121,6 +121,9 @@
 
       offEvents () {
         window.removeEventListener('resize', this.onResize);
+        this.currentImg && (this.currentImg.onload = null);
+        this.currentImg && (this.currentImg.onerror = null);
+        this.currentImg = null;
       },
 
       onEvents () {
@@ -154,7 +157,7 @@
 
         if (!this.lazy) {
           this.$nextTick(() => {
-            let img = this.$refs.img;
+            let img = this.currentImg = this.$refs.img;
 
             if (img.complete) {
               this.loadSuccess();
@@ -180,6 +183,11 @@
       loadSuccess () {
         this.isLoading = 0;
         this.isLoaded = 1;
+
+        if (!this.$refs.img) {
+          return;
+        }
+
         this.setImageScale();
         this.$emit('loaded');
       },

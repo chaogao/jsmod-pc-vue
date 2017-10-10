@@ -1,6 +1,6 @@
 {
   "name": "jsmod-pc-vue",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "jsmod components for vue",
   "author": "gaochao04@gmail.com",
   "main": "lib/jsmod.pc.js",
