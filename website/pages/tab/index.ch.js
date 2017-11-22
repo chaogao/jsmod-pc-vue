@@ -229,4 +229,63 @@ code.slot.zh = `
 \`\`\`
 `;
 
+code.model = {};
+
+code.model.zh = `
+\`\`\`
+  <div class="index-eg">
+    current index: {{ index }}        
+  </div>
+
+  <mod-tab v-model="index">
+
+    <mod-tab-item label="项目A" >
+      <div class="tab-content">
+        <p>这是标签栏目1</p>
+        <p>这是标签栏目1</p>
+        <p>这是标签栏目1</p>
+        <mod-image :width="300" :ratio="0.8" src="https://oajua4pqj.qnssl.com/o_1bfba3u05hj917a9bmkeeq184dc.jpeg"></mod-image>
+      </div>
+    </mod-tab-item>
+
+    <mod-tab-item label="项目B">
+      <div class="tab-content">
+        <p>这是标签栏目2</p>
+        <p>这是标签栏目2</p>
+        <p>这是标签栏目2</p>
+      </div>
+    </mod-tab-item>
+  </mod-tab>
+\`\`\`
+`;
+
+code.model.en = `
+\`\`\`
+  <div class="index-eg">
+    current index: {{ index }}        
+  </div>
+
+  <mod-tab v-model="index">
+
+    <mod-tab-item label="项目A" >
+      <div class="tab-content">
+        <p>这是标签栏目1</p>
+        <p>这是标签栏目1</p>
+        <p>这是标签栏目1</p>
+        <mod-image :width="300" :ratio="0.8" src="https://oajua4pqj.qnssl.com/o_1bfba3u05hj917a9bmkeeq184dc.jpeg"></mod-image>
+      </div>
+    </mod-tab-item>
+
+    <mod-tab-item label="项目B">
+      <div class="tab-content">
+        <p>这是标签栏目2</p>
+        <p>这是标签栏目2</p>
+        <p>这是标签栏目2</p>
+      </div>
+    </mod-tab-item>
+  </mod-tab>
+\`\`\`
+`;
+
+
 export default code;

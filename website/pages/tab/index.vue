@@ -3,13 +3,14 @@
     "en": {
       "eg_base": "Basic Usage",
       "eg_fade": "Use Fade Effect Switch && Listen Events, height will set auto",
-      "eg_scoped": "Customize style and layout by scoped slot"
+      "eg_scoped": "Customize style and layout by scoped slot",
+      "eg_vmodel": "Use 'v-model' control actived index"
     },
     "zh": {
       "eg_base": "基础示例：两种切换方式",
       "eg_fade": "切换 tab 使用渐变，高度会设置为自适应",
-      "eg_scoped": "使用作用域插槽实现自定义样式和布局"
-
+      "eg_scoped": "使用作用域插槽实现自定义样式和布局",
+      "eg_vmodel": "使用 v-model 控制选中的索引"
     }
   }
 </i18n>
@@ -115,6 +116,36 @@
       <j-code  :langSources="code.slot"></j-code>
 
     </div>
+
+    <div class="components-view">
+      <div class="view-title">{{ $t('eg_scoped') }}</div>
+
+      <div class="index-eg">
+        current index: {{ index }}        
+      </div>
+
+      <mod-tab v-model="index">
+
+        <mod-tab-item label="项目A" >
+          <div class="tab-content">
+            <p>这是标签栏目1</p>
+            <p>这是标签栏目1</p>
+            <p>这是标签栏目1</p>
+            <mod-image :width="300" :ratio="0.8" src="https://oajua4pqj.qnssl.com/o_1bfba3u05hj917a9bmkeeq184dc.jpeg"></mod-image>
+          </div>
+        </mod-tab-item>
+
+        <mod-tab-item label="项目B">
+          <div class="tab-content">
+            <p>这是标签栏目2</p>
+            <p>这是标签栏目2</p>
+            <p>这是标签栏目2</p>
+          </div>
+        </mod-tab-item>
+      </mod-tab>
+
+      <j-code :langSources="code.model"></j-code>
+    </div>
   </layout>
 </template>
 
@@ -131,8 +162,15 @@
         api: {
           en: apiEn,
           zh: apiZh
-        }
+        },
+        index: 1
       }
+    },
+
+    mounted () {
+      setInterval(() => {
+        this.index = this.index == 1 ? 0 : 1;
+      }, 2000);
     },
 
     methods: {

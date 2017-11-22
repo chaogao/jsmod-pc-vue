@@ -29,6 +29,11 @@
         default: 0
       },
 
+      value: {
+        type: Number,
+        default: 0,
+      },
+
       trigger: {
         type: String,
         default: 'click'
@@ -76,7 +81,7 @@
         }
 
         return obj;
-      }
+      },
     },
 
     mounted () {
@@ -100,10 +105,19 @@
           this.$emit('active', {
             activeIndex: this.currentInner
           });
+
+          this.$emit('input', this.currentInner);
         },
 
         immediate: false
-      }
+      },
+
+      value: {
+        handler: function (val) {
+          this.currentInner = val;
+        },
+        immediate: true
+      },
     },
 
     methods: {

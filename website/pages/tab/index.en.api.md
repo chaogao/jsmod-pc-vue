@@ -1,7 +1,7 @@
 ### props
 | name        | default     |   type      | description |
 | ----------- |-------------|-------------|-------------|
-| activeIndex | 0           |    Number   |  the default active index |
+| activeIndex | 0           |    Number   |  the default active index (if you set v-model do not set this value)  |
 | trigger     |   click     |    String   |  set trigger method `click` `hover` |
 | hoverDelay  |    100      |    Number   |  delay of active (need set trigger to `hover`)   |
 | tabContainerClass |       |    String   |  set class for tab container |
