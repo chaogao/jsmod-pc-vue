@@ -10,7 +10,9 @@ const ZH = {
   'error': '失败',
 
   'prePage': '上一页',
-  'nextPage': '下一页'
+  'nextPage': '下一页',
+
+  'selectPlaceHolder': '请选择',
 }
 
 const EN = {
@@ -23,7 +25,9 @@ const EN = {
   'error': 'Error',
 
   'prePage': 'Pre',
-  'nextPage': 'Next'
+  'nextPage': 'Next',
+
+  'selectPlaceHolder': 'Select'
 }
 
 let vm = new Vue({

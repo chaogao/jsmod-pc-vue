@@ -219,6 +219,10 @@ export default {
 
     initClickEvents () {
       this.getTarget().addEventListener('click', () => {
+        if (this.disabled === true) {
+          return;
+        }
+
         this.canShow = !this.canShow;
       });
 
@@ -251,6 +255,10 @@ export default {
       }
 
       this.getTarget().addEventListener('mouseenter', () => {
+        if (this.disabled === true) {
+          return;
+        }
+
         this.showTimer && clearTimeout(this.showTimer);
         this.hideTimer && clearTimeout(this.hideTimer);
 
@@ -258,6 +266,10 @@ export default {
       });
 
       this.getTarget().addEventListener('mouseleave', () => {
+        if (this.disabled === true) {
+          return;
+        }
+
         this.showTimer && clearTimeout(this.showTimer);
         this.hideTimer && clearTimeout(this.hideTimer);
 
@@ -265,10 +277,18 @@ export default {
       });
 
       this.$refs.content.addEventListener('mouseenter', () => {
+        if (this.disabled === true) {
+          return;
+        }
+
         this.hideTimer && clearTimeout(this.hideTimer);
       });
 
       this.$refs.content.addEventListener('mouseleave', () => {
+        if (this.disabled === true) {
+          return;
+        }
+        
         this.showTimer && clearTimeout(this.showTimer);
         this.hideTimer && clearTimeout(this.hideTimer);
 

@@ -81,6 +81,11 @@
             ModPagination
             <span class="cn-name">分页</span>
           </router-link>
+
+          <router-link active-class="router-active" to="select">
+            ModSelect
+            <span class="cn-name">下拉菜单</span>
+          </router-link>
         </div>
       </div>
 

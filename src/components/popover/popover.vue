@@ -29,6 +29,11 @@
         default: '#fff'
       },
 
+      disabled: {
+        default: false,
+        type: Boolean,
+      },
+
       useFade: {
         type: Boolean,
         default: true

@@ -24,6 +24,9 @@ import { ModPagination, PAGE_TYPE } from './components/pagination';
 
 import { ModPopover } from './components/popover';
 
+import { ModSelect } from './components/select';
+import { ModSelectItem } from './components/select';
+
 import lang from './components/utils/lang'
 
 
@@ -47,7 +50,9 @@ const Components = {
   ModTabItem,
   ModPagination,
   ModPopover,
-  ModLayer
+  ModLayer,
+  ModSelect,
+  ModSelectItem
 }
 
 const install = (Vue, options) => {

@@ -13,6 +13,7 @@ import Image from '../pages/image'
 import Tab from '../pages/tab'
 import Pagination from '../pages/pagination'
 import Popover from '../pages/popover/popover'
+import Select from '../pages/select/select'
 
 import config from '../../config'
 
@@ -92,6 +93,11 @@ let router = new Router({
       path: '/popover',
       name: 'Popover',
       component: Popover
+    },
+    {
+      path: '/select',
+      name: 'select',
+      component: Select
     }
   ]
 });

@@ -392,6 +392,50 @@
   border-color: transparent;
   position: absolute;
 }
+
+.jsmod-select {
+  position: relative;
+}
+.jsmod-select .jsmod-select-input {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+.jsmod-select .jsmod-select-input.jsmod-select-input-disabled {
+  cursor: not-allowed;
+  color: #999;
+}
+.jsmod-select .jsmod-select-input .arrow-flag {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  margin-top: -10px;
+  transition: transform 0.5s;
+}
+.jsmod-select .jsmod-select-input .arrow-flag.arrow-flag-open {
+  transform: rotate(-180deg);
+}
+.jsmod-select .jsmod-select-options-wrap {
+  border: 1px solid #efefef;
+}
+.jsmod-select .jsmod-select-options-wrap .jsmod-select-item {
+  border-bottom: 1px solid #efefef;
+}
+.jsmod-select .jsmod-select-options-wrap .jsmod-select-item:last-child {
+  border-bottom: none;
+}
+
+.jsmod-select-item {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  cursor: pointer;
+}
+.jsmod-select-item:hover {
+  background: #efefef;
+}
 .jsmod-mask {
   position: fixed;
   left: 0;
