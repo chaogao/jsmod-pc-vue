@@ -85,7 +85,9 @@
         arrowPosition: {
           left: 0,
           top: 0
-        }
+        },
+
+        loaded: 0
       }
     },
 
@@ -93,6 +95,8 @@
       this.canShow && this.$nextTick(() => {
         this.fixArrow();
       });
+
+      this.loaded = true;
     },
 
     methods: {
@@ -247,6 +251,10 @@
 
         if (this.background) {
           obj.background = this.background;
+        }
+
+        if (!this.loaded) {
+          obj.visibility = 'hidden';
         }
 
         return obj;
