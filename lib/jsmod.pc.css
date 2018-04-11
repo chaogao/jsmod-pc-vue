@@ -419,6 +419,7 @@
 }
 .jsmod-select .jsmod-select-options-wrap {
   border: 1px solid #efefef;
+  overflow: auto;
 }
 .jsmod-select .jsmod-select-options-wrap .jsmod-select-item {
   border-bottom: 1px solid #efefef;

@@ -47,6 +47,7 @@
         style.width = this._style.width;
         style.border = this._style.border;
         style.borderRadius = this._style.borderRadius;
+        style.maxHeight = this.maxHeight + 'px';
 
         return style;
       },
@@ -98,6 +99,11 @@
       disabled: {
         default: false,
         type: Boolean
+      },
+
+      maxHeight: {
+        default: 200,
+        type: [Number]
       }
     },
 
@@ -221,6 +227,7 @@
       
     .jsmod-select-options-wrap
       border: 1px solid border-color;
+      overflow: auto;
       
       .jsmod-select-item
         border-bottom: 1px solid border-color;
