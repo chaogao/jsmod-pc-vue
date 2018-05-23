@@ -112,6 +112,23 @@
       <j-code :source="code.max"></j-code>
     </div>
 
+
+    <div class="components-view">
+      <div class="view-title">配置option宽度</div>
+
+      <mod-select  v-model="selectValue6" :optionWidth="200" :maxHeight="100">
+        <mod-select-item :value="1" label="测试1">测试1</mod-select-item>
+        <mod-select-item :value="2" label="测试2">测试2</mod-select-item>
+        <mod-select-item :value="3" label="测试3">测试3</mod-select-item>
+        <mod-select-item :value="4" label="测试4">测试4</mod-select-item>
+        <mod-select-item :value="5" label="测试5">测试5</mod-select-item>
+        <mod-select-item :value="6" label="测试6">测试6</mod-select-item>
+        <mod-select-item :value="7" label="测试7">测试7</mod-select-item>
+      </mod-select>
+
+      <j-code :source="code.option"></j-code>
+    </div>
+
   </layout>
 </template>
 
@@ -132,6 +149,7 @@
         selectValue3: '',
         selectValue4: 1,
         selectValue5: 1,
+        selectValue6: 1,
         customStyle: {
           borderRadius: 0,
           width: '100px',

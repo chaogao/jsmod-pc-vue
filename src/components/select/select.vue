@@ -1,6 +1,6 @@
 <template>
   <div class="jsmod-select">
-    <mod-popover :disabled="disabled" v-model="popoverShow" target-type="bottom" :arrow="false" :offset="{top: 5}">
+    <mod-popover :disabled="disabled" v-model="popoverShow" target-type="bottom,left,right" :arrow="false" :offset="{top: 5}">
       <div :style="_style" :class="['jsmod-select-input', disabled == true ? 'jsmod-select-input-disabled' : '']">
         {{ displayLabel }}
 
@@ -44,7 +44,7 @@
       _optionStyle () {
         let style = {};
 
-        style.width = this._style.width;
+        style.width = this.optionWidth ? this.optionWidth + 'px' : this._style.width;
         style.border = this._style.border;
         style.borderRadius = this._style.borderRadius;
         style.maxHeight = this.maxHeight + 'px';
@@ -103,6 +103,11 @@
 
       maxHeight: {
         default: 200,
+        type: [Number]
+      },
+
+      optionWidth: {
+        default: null,
         type: [Number]
       }
     },

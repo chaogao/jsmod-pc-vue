@@ -68,4 +68,18 @@ code.max = `
 \`\`\`
 `;
 
+code.option = `
+\`\`\`javascript
+  <mod-select  v-model="selectValue6" :optionWidth="200" :maxHeight="100">
+    <mod-select-item :value="1" label="测试1">测试1</mod-select-item>
+    <mod-select-item :value="2" label="测试2">测试2</mod-select-item>
+    <mod-select-item :value="3" label="测试3">测试3</mod-select-item>
+    <mod-select-item :value="4" label="测试4">测试4</mod-select-item>
+    <mod-select-item :value="5" label="测试5">测试5</mod-select-item>
+    <mod-select-item :value="6" label="测试6">测试6</mod-select-item>
+    <mod-select-item :value="7" label="测试7">测试7</mod-select-item>
+  </mod-select>
+\`\`\`
+`;
+
 export default code;
