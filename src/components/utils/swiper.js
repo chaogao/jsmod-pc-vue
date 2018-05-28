@@ -144,10 +144,10 @@ class Swiper {
     arrayFrom(me.$items).forEach(function ($item, key) {
       let transformCallback = function () {
         let distance = me._offset[key] + offset
-        let transform = `translate3d(${distance}px, 0, 0)`
+        let transform = `translate(${distance}px, 0)`
 
         if (me._options.direction === 'vertical') {
-          transform = `translate3d(0, ${distance}px, 0)`
+          transform = `translate(0, ${distance}px)`
         }
 
         $item.style.webkitTransform = transform
